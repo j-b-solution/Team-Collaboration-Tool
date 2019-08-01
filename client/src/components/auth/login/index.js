@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as  Route, Link } from "react-router-dom";
+
 import LoginForm from './_loginForm';
 
 class Login extends Component {
@@ -28,7 +30,7 @@ class Login extends Component {
                 <p className="login_forgot_pw">Did you forget your password?</p>
 
                 <p>Haven't registered your account?</p>
-                <a className="login_link_register">Go register</a>
+                <Link className="login_link_register" to='/register'>Go register</Link>
             </div>
         )
     }

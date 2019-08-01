@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as  Route, Link } from "react-router-dom";
+
 import Image_logo from "../../assets/images/logo.png"
 
 
@@ -15,9 +17,9 @@ class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home
-                  <span className="sr-only">(current)</span>
-                            </a>
+                            <Link className="nav-link" to='/'>Home
+                            <span className="sr-only">(current)</span>
+                            </Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">About</a>
@@ -29,7 +31,7 @@ class Header extends Component {
                             <a className="nav-link" href="#">Contact</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Sign In</a>
+                            <Link className="nav-link" to="/login">Sign In</Link>
                         </li>
                     </ul>
                 </div>

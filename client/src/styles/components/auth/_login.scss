@@ -51,6 +51,10 @@
         border: 1px solid #e1e1e1;
         border-radius: 20px;
         padding: 0.5rem 1rem;
-
+        color: black;
+        &:hover {
+            text-decoration: none;
+            border: .5px solid black;
+        }
     }
 }
