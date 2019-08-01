@@ -1,0 +1,56 @@
+.Login_Container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    width: 400px;
+    .login_title {
+        font-size: $s-size;
+    }
+    .login_form {
+        background-color: white;
+        z-index: 50;
+        .inputTextBox {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0;
+            margin: 15px 0;
+            border: none;
+            background: #e5e5e5;
+            text-indent: 30px;
+            text-transform: none;
+            line-height: 20px;
+            border-radius: 20px;
+            font-size: $ss-size;
+        }
+        .btnLogin {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0;
+            margin: 15px 0;
+            border: none;
+            font-weight: bold;
+            background-color: $key-color;
+            color: white;
+            text-transform: none;
+            line-height: 20px;
+            border-radius: 20px;
+            font-size: $ss-size;
+            cursor: pointer;
+        }
+    }
+    .login_forgot_pw {
+        color: #00abe6;
+        font-size: $ss-size;
+        margin-bottom: 20px;
+    }
+
+    .login_link_register {
+        border: 1px solid #e1e1e1;
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+
+    }
+}
