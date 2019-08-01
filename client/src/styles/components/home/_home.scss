@@ -1,6 +1,12 @@
-.Home {
-    display:block;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0px;
+  margin-left: 0px;
 }
-.home {
-  text-align: center;
+.col-md-5{
+    position: relative;
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 15px;
 }
