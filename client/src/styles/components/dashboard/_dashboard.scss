@@ -1,0 +1,51 @@
+.Dashboard_container {
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    //Left Grid
+    .Db_left_4{
+        width: 20%;
+        background-color: aqua;
+        //_teamLogo.js
+        .teamLogo_container {
+            min-height: 55px;
+            background-color: darkgreen;
+            .teamLogo {
+
+            }
+            .teamLogo_name {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+    }
+
+    // Mid Grid
+    .Db_mid_7 {
+        width: 75%;
+        background-color: blueviolet;
+        .ChatBox_Container {
+            .ChatBox_title {
+                min-height: 55px;
+                background-color: darkseagreen;
+                p {
+                    margin: 0;
+                }
+            }
+            .ChatBox_msg {
+                min-height: 80vh;
+                background-color: antiquewhite;
+            }
+            .ChatBox_msg_inputBox {
+
+            }
+        }
+    }
+
+    // right Grid
+    .Db_right_1 {
+        width: 5%;
+        background-color: chocolate;
+
+    }
+}

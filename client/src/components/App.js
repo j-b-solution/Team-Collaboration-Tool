@@ -9,6 +9,7 @@ import Home from '../components/home/Home';
 import Login from './auth/login/index';
 import Register from './auth/register';
 
+import Main from './main';
 import Dashboard from './dashboard';
 
 class App extends Component {
@@ -21,6 +22,8 @@ class App extends Component {
                 
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
+
+                <Route exact path='/main' component={Main} />
 
                 <Route exact path='/dashboard' component={Dashboard} />
                 

@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-
-// import CreateTeambtn from './_createTeambtn';
-// import Header from './_header';
-import TeamList from './_teamList';
-import UserProfile from './_userProfile';
+import TeamLogo from './_teamLogo';
+import ChatBox from './chatbox';
 
 class Dashboard extends Component {
-
-    render() {
+    render(){
         return (
-            <div className="wrap fade _wrap in">
-            
-            <UserProfile/>
-            <TeamList/>
-            
+            <div className="Dashboard_container">
+                <div className="Db_left_4">
+                    <TeamLogo />
+                </div>
+                <div className="Db_mid_7">
+                    <ChatBox />
+                </div>
+                <div className="Db_right_1">
+                    additional functions
+                </div>
             </div>
-        );
+        )
     }
 }
 
