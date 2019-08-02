@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Image_logo from "../../assets/images/logo.png;
+import Image_logo from "../../assets/images/logo.png";
 
 class UserProfile extends Component {
 
