@@ -20,7 +20,10 @@
         margin: 0 2px;
         padding: 0.5rem 1.5rem;
         border: 0.5px solid black;
-        background: none;
-
+        background: $key-color;
+        color: white;
+        &:disabled {
+            color: darkseagreen;
+        }
     }
 }
