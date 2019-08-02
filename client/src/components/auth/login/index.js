@@ -19,9 +19,7 @@ class Login extends Component {
     };
     _onSubmit = (e) => {
         e.preventDefault();
-
         let { username, password } = this.state;
-        
         this.setState({
             auth: {
                 username: '',
@@ -31,6 +29,7 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className="Login_Container">
                 <p className="login_title">Log in</p>
