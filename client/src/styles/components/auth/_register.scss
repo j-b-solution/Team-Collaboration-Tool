@@ -1,4 +1,4 @@
-.Login_Container {
+.Register_Container {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -6,10 +6,10 @@
     position: absolute;
     text-align: center;
     width: 400px;
-    .login_title {
+    .register_title {
         font-size: $s-size;
     }
-    .login_form {
+    .Register_form {
         background-color: white;
         z-index: 50;
         .inputTextBox {
@@ -25,7 +25,7 @@
             border-radius: 20px;
             font-size: $ss-size;
         }
-        .btnLogin {
+        .btnRegister {
             display: block;
             width: 100%;
             padding: 0.5rem 0;
@@ -45,15 +45,8 @@
         color: #00abe6;
         font-size: $ss-size;
         margin-bottom: 20px;
-        &:hover {
-            text-decoration: underline;
-            cursor: pointer;
-        }
     }
-    .login_link_title {
-        display: block;
-        margin: 20px;
-    }
+
     .login_link_register {
         border: 1px solid #e1e1e1;
         border-radius: 20px;

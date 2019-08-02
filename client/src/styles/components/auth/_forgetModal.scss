@@ -1,0 +1,26 @@
+.modal_title {
+    font-size: $s-size;
+}
+.txtbox_email {
+        width: 100%;
+        font-size: $ss-size;
+        padding: 10px;
+}
+.Modal_btnRow{
+    margin-top: 10px;
+    text-align: right;
+    .Modal_btnClear{
+        margin: 0 2px;
+        background: none;
+        padding: 0.5rem 1.5rem;
+        border: 0.5px solid black;
+    }
+    
+    .Modal_btnSubmit {
+        margin: 0 2px;
+        padding: 0.5rem 1.5rem;
+        border: 0.5px solid black;
+        background: none;
+
+    }
+}
