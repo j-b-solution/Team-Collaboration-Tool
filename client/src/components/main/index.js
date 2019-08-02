@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import TeamList from './_teamList';
 import UserProfile from './_userProfile';
 
-class Dashboard extends Component {
+class Main extends Component {
 
     render() {
         return (
@@ -19,4 +19,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default Main;
