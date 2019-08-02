@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const LoginForm = ({onChange, onSubmit}) => {
     return (
@@ -8,6 +9,16 @@ const LoginForm = ({onChange, onSubmit}) => {
             <button className="btnLogin" type="submit">Log in</button>
         </form>
     )
+}
+
+LoginForm.propTypes = {
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func
+}
+
+LoginForm.defaultProps = {
+    onChange: console.warn('function onChange has not defined...'),
+    onSubmit: console.warn('function onSubmit has not defined...')
 }
 
 export default LoginForm;
