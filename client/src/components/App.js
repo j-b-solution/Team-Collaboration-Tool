@@ -9,7 +9,7 @@ import Home from '../components/home/Home';
 import Login from './auth/login/index';
 import Register from './auth/register';
 
-import Dashboard from './dashboard';
+import Main from './main';
 
 class App extends Component {
     render() {
@@ -22,7 +22,7 @@ class App extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
 
-                <Route exact path='/dashboard' component={Dashboard} />
+                <Route exact path='/main' component={Main} />
                 
                 
                 <Footer />
