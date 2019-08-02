@@ -8,6 +8,9 @@ import Footer from '../components/common/Footer';
 import Home from '../components/home/Home';
 import Login from './auth/login/index';
 import Register from './auth/register';
+
+import Dashboard from './dashboard';
+
 class App extends Component {
     render() {
         return (
@@ -19,8 +22,11 @@ class App extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
 
-                </Router>
+                <Route exact path='/dashboard' component={Dashboard} />
+                
+                
                 <Footer />
+                </Router>
                     
 
             </div>

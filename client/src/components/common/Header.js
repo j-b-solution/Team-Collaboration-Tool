@@ -22,13 +22,13 @@ class Header extends Component {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
+                            <Link className="nav-link" href="#">About</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Services</a>
+                            <Link className="nav-link" href="#">Services</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Contact</a>
+                            <Link className="nav-link" href="#">Contact</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Sign In</Link>
