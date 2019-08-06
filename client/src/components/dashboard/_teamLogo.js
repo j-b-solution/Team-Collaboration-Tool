@@ -5,8 +5,11 @@ import logo from '../../assets/images/logo.png';
 const TeamLogo = ({imgSrc, teamName}) => {
     return (
         <div className="teamLogo_container">
-            <img className="teamLogo" src={imgSrc} alt="team_logo" />
-            <p className="teamLogo_name">{teamName}</p>
+            <div className="teamLogo_wrap">
+                <img className="teamLogo" src={imgSrc} alt="team_logo" />
+                <p className="teamLogo_name">{teamName}</p>
+            </div>
+
         </div>
     )
 }
@@ -19,7 +22,7 @@ TeamLogo.propTypes = {
 
 TeamLogo.defaultProps = {
     imgSrc: logo,
-    teamName: 'Team Name'
+    teamName: 'JB Solutions'
 }
 
 
