@@ -5,17 +5,77 @@
     //Left Grid
     .Db_left_4{
         width: 20%;
-        background-color: aqua;
+        background-color: $key-color;
+        border-right: 0.5px solid #969696;
         //_teamLogo.js
         .teamLogo_container {
             min-height: 55px;
-            background-color: darkgreen;
-            .teamLogo {
-
+            background-color: white;
+            text-align: center;
+            .teamLogo_wrap {
+                padding: 2% 0;
+                .teamLogo {
+                    width: 40px;
+                    height: 40px;
+                    vertical-align: bottom;
+                }
+                .teamLogo_name {
+                    display: inline-block;
+                    margin: 0 2rem;
+                    font-size: $s-size;
+                    font-weight: bold;
+                }
             }
-            .teamLogo_name {
-                display: inline-block;
-                margin: 0;
+        }
+        .SearchBox_container {
+            border-top: 0.5px solid #969696;
+            border-bottom: 0.5px solid #969696;
+            background-color: white;
+            min-height: 4%;
+            text-align: center;
+            .SearchBox {
+                background-color: rgb(241, 241, 241);
+                border-radius: 14px;
+                border: none;
+                text-align: center;
+                font-style: italic;
+                position: relative;
+                height: 28px;
+                margin: 5px 0;
+                width: 90%;
+                &:hover {
+                    .tooltiptext {
+                        visibility: visible;
+                    }
+                }
+                &:focus {
+                    outline: none;
+                }
+                .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    padding: 5px 0;
+                    border-radius: 6px;
+                    transform: translate(-50%, 10px);
+                    top: 100%;
+                    left: 50%;
+                    position: absolute;
+                    z-index: 1;
+                    &:after {
+                        content: " ";
+                        position: absolute;
+                        bottom: 100%;  
+                        left: 50%;
+                        margin-left: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: transparent transparent black transparent;
+                    }
+                }
+                
             }
         }
     }
@@ -23,21 +83,58 @@
     // Mid Grid
     .Db_mid_7 {
         width: 75%;
-        background-color: blueviolet;
         .ChatBox_Container {
-            .ChatBox_title {
+            .ChatBox_titleBox {
                 min-height: 55px;
-                background-color: darkseagreen;
-                p {
+                background-color: white;
+                border-bottom: 0.5px solid #e3e3e3;
+                .ChatBox_title {
                     margin: 0;
+                    font-weight: 700;
+                    padding: 5px;
+                    font-size: $ss-size;
+                }
+                .ChatBox_desc {
+                    margin: 0 10px;
+                    font-size: 14px;
                 }
             }
             .ChatBox_msg {
                 min-height: 80vh;
-                background-color: antiquewhite;
+                background-color: #e6e6e6;
+                padding: 20px;
             }
             .ChatBox_msg_inputBox {
-
+                border-top: 0.5px solid #e3e3e3;
+                min-height: 100px;
+                .InputBox_Body {
+                    margin: 20px 0;
+                    display: inline-flex;
+                    .InputBox_btnPlus {
+                        margin: auto;
+                        color: $key-color;
+                        &:hover {
+                            transform: rotate(45deg);
+                            transition: .5s;
+                            cursor: pointer;
+                        }
+                    }
+                    .Body_Textbox {
+                        width: 90%;
+                        height: 80px;
+                        text-indent: 20px;
+                        text-align: left;
+                        resize: none;
+                    }
+                    .Body_btnSend {
+                        height: 80px;
+                        margin-left: 10px;
+                        background-color: $key-color;
+                        color: white;
+                        border: none;
+                        border-radius: 10%;
+                    }
+                }
             }
         }
     }
@@ -45,7 +142,7 @@
     // right Grid
     .Db_right_1 {
         width: 5%;
-        background-color: chocolate;
-
+        background-color: $key-color;
+        color: white;
     }
 }
