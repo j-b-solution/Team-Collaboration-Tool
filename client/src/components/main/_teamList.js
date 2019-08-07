@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Image_logo from "../../assets/images/logo.png";
 
 class TeamList extends Component {
-    render() {
-        return (
+    render() { 
+        return (  
             <article>
                 <section className="section userProfile_body">
                     <hearder className="section_head">

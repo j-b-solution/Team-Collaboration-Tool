@@ -10,28 +10,40 @@ import Login from './auth/login/index';
 import Register from './auth/register';
 
 import Main from './main';
+import Dashboard from './dashboard';
 
-class App extends Component {
-    render() {
+const App = () =>  {
         return (
             <div className="App">
                 <Router>
-                <Header />       
-                <Route exact path='/' component={Home} />
-                
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
+                    <Switch>
+                        <Route exact path='/dashboard' component={DashboardContainer}/>
+                        <Route component={DefaultContainer} />             
+                    </Switch>
 
-                <Route exact path='/main' component={Main} />
-                
-                
-                <Footer />
                 </Router>
-                    
-
             </div>
         )
-    }
 }
+
+const DashboardContainer = () => (
+    <div>
+        <Route exact path='/dashboard' component={Dashboard} />
+    </div>
+);
+
+const DefaultContainer = () => (
+    <div>
+        <Header />       
+        <Route exact path='/' component={Home} />
+        
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+
+        <Route exact path='/main' component={Main} />
+
+        <Footer />
+    </div>
+);
 
 export default App;
