@@ -1,0 +1,28 @@
+.logo {
+    width: 250px;
+}
+
+.navbar-nav {
+    width: 100%;
+    margin: 1rem 0;
+    .nav-link {
+        margin: 0 1rem;
+        &.signin {
+            padding-left: 24px;
+            padding-right: 24px;
+            color: white;
+            background-color: $key-color;
+            border: 1px solid $key-color;
+            border-radius: 50px;
+            &:hover {
+                color:white;
+                background-color: $key-color-dark;
+                border: 1px solid $key-color-dark;
+            }
+        }
+    }
+    .right {
+            margin: 0 0 0 auto;
+    }
+}
+
