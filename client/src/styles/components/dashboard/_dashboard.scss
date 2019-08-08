@@ -111,7 +111,10 @@
                     margin: 20px 0;
                     display: inline-flex;
                     .InputBox_btnPlus {
-                        margin: auto;
+                        margin-right: 5px;
+                         margin-left: 5px;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
                         color: $key-color;
                         &:hover {
                             transform: rotate(45deg);
@@ -129,6 +132,7 @@
                     .Body_btnSend {
                         height: 80px;
                         margin-left: 10px;
+                        margin-right: 10px;
                         background-color: $key-color;
                         color: white;
                         border: none;

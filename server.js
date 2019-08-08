@@ -12,7 +12,7 @@ let http = require('http');
  * Get port from environment and store in Express.
  */
 
-let port = normalizePort(process.env.PORT || '3000');
+let port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 /**
@@ -28,6 +28,10 @@ let server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+//implement web socketio. 
+const socketio = require('socket.io')
+const io = socketio.listen(server)
 
 /**
  * Normalize a port into a number, string, or false.
@@ -88,3 +92,15 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+//user connect event 
+io.on('connection', (socket) => {
+  console.log('user connected:', socket.client.id)
+  // get msg
+  socket.on('chat-msg', (msg) => {
+    console.log('message:', msg)
+  // sending message to connected user
+    io.emit('chat-msg', msg)
+  })
+})
