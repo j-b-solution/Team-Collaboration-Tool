@@ -31,6 +31,8 @@ class Login extends Component {
     render() {
         console.log(this.state)
         return (
+            <div>
+            
             <div className="Login_Container">
                 <p className="login_title">Log in</p>
                 <LoginForm onChange={e => this.setState({[e.target.name]: e.target.value})} onSubmit={this._onSubmit}/>
@@ -39,6 +41,8 @@ class Login extends Component {
                 <p className="login_link_title">Haven't registered your account?</p>
                 <Link className="login_link_register" to='/register'>Go register</Link>
             </div>
+            </div>
+
         )
     }
 }

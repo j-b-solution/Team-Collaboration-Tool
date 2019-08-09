@@ -35,7 +35,7 @@ class InputBox extends React.Component  {
                     onChange={e => this.nameChanged(e)} placeholder="user name"/><br />
                     <input value={this.state.message}
                     onChange={e => this.messageChanged(e)} placeholder="Enter MSG"/><br />
-                        <input type="button" onClick={e => this.send()} class="chat" value="send"/>
+                        <input type="button" onClick={e => this.send()} className="chat" value="send"/>
                     </form>                    
                 </form>
             </div>
