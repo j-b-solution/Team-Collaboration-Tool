@@ -19,20 +19,34 @@ class Login extends Component {
     };
     _onSubmit = (e) => {
         e.preventDefault();
-        let { username, password } = this.state;
-        this.setState({
-            auth: {
-                username: '',
-                password: ''
+
+        fetch('http://localhost:8080/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*'
+            },
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password
+            })
+        }).then(res => {
+            return res.json();
+        }).then(res => {
+            if(res.success){
+                sessionStorage.setItem("user", this.state.username);
+                sessionStorage.setItem("token", res.token);
+
+                this.props.history.push('/dashboard');
             }
+        }).catch(err => {
+            console.log(err);
         })
     }
 
     render() {
-        console.log(this.state)
         return (
-            <div>
-            
             <div className="Login_Container">
                 <p className="login_title">Log in</p>
                 <LoginForm onChange={e => this.setState({[e.target.name]: e.target.value})} onSubmit={this._onSubmit}/>
@@ -41,8 +55,6 @@ class Login extends Component {
                 <p className="login_link_title">Haven't registered your account?</p>
                 <Link className="login_link_register" to='/register'>Go register</Link>
             </div>
-            </div>
-
         )
     }
 }

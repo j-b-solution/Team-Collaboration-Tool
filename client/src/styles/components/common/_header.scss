@@ -14,10 +14,15 @@
             background-color: $key-color;
             border: 1px solid $key-color;
             border-radius: 50px;
-            &:hover {
+            &:visited {
                 color:white;
                 background-color: $key-color-dark;
                 border: 1px solid $key-color-dark;
+            }
+            &:hover {
+                color:white;
+                background-color: $key-color;
+                border: 1px solid $key-color;
             }
         }
     }

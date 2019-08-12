@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { isLoggedIn  }  from '../helpers/auth';
 
 
 import Header from "../components/common/Header";
@@ -36,8 +37,12 @@ const DefaultContainer = () => (
     <div>
         <Header />       
         <Route exact path='/' component={Home} />
-        
-        <Route exact path='/login' component={Login} />
+        {
+            isLoggedIn() ? 
+            <Route exact path="/login" render={() => (<Redirect to="/"/> )} /> 
+            : 
+            <Route exact path='/login' component={Login} />
+        }
         <Route exact path='/register' component={Register} />
 
         <Route exact path='/main' component={Main} />
