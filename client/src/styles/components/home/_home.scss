@@ -84,7 +84,6 @@
   }
   .features_container {
     position: relative;
-    min-height: 1200px;
     .feature_title {
       text-align: center;
       font-size:$m-size;
@@ -121,6 +120,55 @@
 
       }
 
+    }
+  }
+  .inner-banner {
+    width: 100%;
+    position: relative;
+    background-color: $key-color;
+    .banner-wrap{
+      max-width: 1100px;
+      padding: 100px;
+      margin: 0 auto;
+      .banner-title {
+        color: white;
+        font-size: 3rem;
+        text-align: center;
+        font-weight: bold;  
+      }
+      .banner-info {
+        color: white;
+        font-size: $ss-size;
+        text-align: center;
+  
+      }
+      .banner_btnbox {
+        margin: 2rem auto;
+        text-align: center;
+          .banner_button {
+            border-radius: 50px;
+            font-size: 16px;
+            line-height: 22px;
+            background-color: $key-color-dark;
+            color: white;
+            border-color: transparent;
+            box-sizing: border-box;
+            padding: .6em 1em .65em;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 0 0.5rem;
+            &:hover {
+              text-decoration: none;
+              transform: translateY(3px);
+              box-shadow: 0 3px 3px -1px rgba(0,0,0,.15);
+            }
+            &.right {
+              background-color: white;
+              color: $key-color;
+              
+            }
+          }
+      }
     }
   }
 }
