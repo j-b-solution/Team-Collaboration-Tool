@@ -11,7 +11,7 @@ class Home extends Component {
         <div className="index_section">
           <div className="inner_wrapper">
             <div className="section_images">
-              <img src={Laptop} alt="laptop" />>
+              <img src={Laptop} alt="laptop" />
             </div>
 
             <div className="section_devider"></div>

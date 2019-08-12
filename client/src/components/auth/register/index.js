@@ -12,8 +12,35 @@ class Register extends Component {
         email: ''
     }
 
-    _submitForm = () => {
-
+    _submitForm = (event) => {
+        event.preventDefault();
+        if(this.state.password !== this.state.confirmPassword){
+            alert('Passwords do not match');
+        }else{
+            fetch('http://localhost:8080/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': '*'
+                },
+                body: JSON.stringify({
+                    username: this.state.username,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    email: this.state.email,
+                    password: this.state.password
+                })
+            }).then(res =>{
+                return res.json();
+            }).then(res => {
+                if(res.success) {
+                    this.props.history.push('/login');
+                }
+            }).catch(err =>{
+                console.log(err);
+            })
+        }
     }
     render() {
         return (
