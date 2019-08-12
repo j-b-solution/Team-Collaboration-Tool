@@ -12,12 +12,13 @@ let session = require('express-session');
 let passport = require('passport');
 
 let passportJWT = require('passport-jwt');
-// let JWTStrategy = passportJWT.Strategy;
-// let ExtractJWT = passportJWT.ExtractJwt;
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
 
 let passportLocal = require('passport-local');
-// let localStrategy = passportLocal.Strategy;
+let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
+
 // database setup
 let mongoose = require('mongoose');
 let DB = require('./db');
@@ -31,8 +32,7 @@ mongoDB.once('open', () => {
     console.log("Connected to MongoDB...");
 });
 
-// let authRouter = require('../routes/auth');
-// let commentRouter = require('../routes/comment');
+let authRouter = require('../routes/auth');
 
 let app = express();
 
@@ -64,34 +64,34 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Create a User model
-// let userModel = require('../models/user');
-// let User = userModel.User;
+let userModel = require('../models/user');
+let User = userModel.User;
 
 // implement a User authetication strategy
-// passport.use(User.createStrategy());
+passport.use(User.createStrategy());
 
 // serialize and deserialize the User info
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // this part verifies that the token is being sent by the user and is valid
-// let jwtOptions = {};
-// jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
-// jwtOptions.secretOrKey = DB.secret;
+let jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = DB.secret;
 
-// let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>{
-//     User.findById(jwt_payload.id)
-//         .then(user => {
-//         return done(null, user);
-//     })
-//     .catch(err =>{
-//         return done(err, false);
-//     });
-// });
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>{
+    User.findById(jwt_payload.id)
+        .then(user => {
+        return done(null, user);
+    })
+    .catch(err =>{
+        return done(err, false);
+    });
+});
 
-// passport.use(strategy);
-// app.use('/api', commentRouter);
-// app.use('/api/auth', authRouter);
+passport.use(strategy);
+
+app.use('/api/auth', authRouter);
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/public/index.html'));
 });
