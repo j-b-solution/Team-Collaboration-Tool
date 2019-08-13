@@ -28,16 +28,19 @@ class InputBox extends React.Component {
         const { user } = this.state;
         return (
             <div>
-                <form className="InputBox_Body">
+                <form className="InputBox_Body" onSubmit={e => {
+                    e.preventDefault();
+                    this.send();
+                }}>
                     <div className="InputBox_btnPlus">
                         <FontAwesomeIcon icon={faPlusCircle} size="2x" />
                     </div>
-                    <form className="Chat" id="chat">
+                    <div className="Chat">
                         <input type="hidden" value={user} />
                         <input className="Body_Textbox" type="text" value={this.state.message}
                             onChange={e => this.messageChanged(e)} placeholder="Enter message" />
-                        <input type="button" onClick={e => this.send()} className="Body_btnSend" value="send"/>
-                    </form>
+                        <input type="submit" className="Body_btnSend" value="send"/>
+                    </div>
                 </form>
             </div>
         )
