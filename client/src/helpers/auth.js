@@ -10,3 +10,8 @@ export function isLoggedIn() {
     return sessionStorage.getItem('token') !== null
 }
 
+export function userId(){
+ return sessionStorage.getItem('user')
+}
+
+export default userId;

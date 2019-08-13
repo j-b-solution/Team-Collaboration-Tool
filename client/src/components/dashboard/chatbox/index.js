@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputBox from './_inputBox';
 import socketio from 'socket.io-client'
+
 const socket = socketio.connect('http://localhost:8080')
 
 class ChatBox extends Component {
@@ -18,7 +19,7 @@ class ChatBox extends Component {
             const logs2 = this.state.logs
             obj.key = 'key_' + (this.state.logs.length + 1)
             console.log(obj)
-            logs2.unshift(obj) // 로그에 추가하기
+            logs2.unshift(obj) 
             this.setState({ logs: logs2 })
         })
     }
@@ -26,8 +27,8 @@ class ChatBox extends Component {
         const messages = this.state.logs.map(e => (
             <div key={e.key}>
                 <span>{e.name}</span>
-                <span>:{e.message}</span>
-                <p/>
+                <span> : {e.message}</span>
+                <p />
             </div>
         ))
         const { title, description } = this.props;
