@@ -108,13 +108,17 @@
                 border-top: 0.5px solid #e3e3e3;
                 min-height: 100px;
                 .InputBox_Body {
+                    width: 100%;
                     margin: 20px 0;
                     display: inline-flex;
+                    .Chat{
+                        width: calc(100% - 60px);
+                        margin: 9px 9px 9px 20px;
+                        position: relative;
+                    
+                    }
                     .InputBox_btnPlus {
-                        margin-right: 5px;
-                         margin-left: 5px;
-                        margin-top: 20px;
-                        margin-bottom: 20px;
+                        margin: 30px 0px 0px 20px;
                         color: $key-color;
                         &:hover {
                             transform: rotate(45deg);
@@ -130,9 +134,9 @@
                         resize: none;
                     }
                     .Body_btnSend {
-                        height: 80px;
-                        margin-left: 10px;
-                        margin-right: 10px;
+                        width: 80px;
+                        height: 40px;
+                        margin: 0px 10px 0px 20px;
                         background-color: $key-color;
                         color: white;
                         border: none;
