@@ -19,7 +19,7 @@ class ChatBox extends Component {
             const logs2 = this.state.logs
             obj.key = 'key_' + (this.state.logs.length + 1)
             console.log(obj)
-            logs2.unshift(obj) 
+            logs2.unshift(obj)
             this.setState({ logs: logs2 })
         })
     }
@@ -39,7 +39,6 @@ class ChatBox extends Component {
                     <p className="ChatBox_desc">{description}</p>
                 </div>
                 <div className="ChatBox_msg">
-                    TODO: Message box, bring message history
                     <div>{messages}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">
