@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Image_logo from "../../assets/images/logo.png";
 
 class UserProfile extends Component {
-
-    state = {}
     render() {
         return (
             <article>
@@ -24,8 +22,8 @@ class UserProfile extends Component {
                             </dd>
                         </dl>
                         <button type="button" className="btn-profile-edit">
-                            <i class="icon icon-pencil" aria-hidden="true"></i>
-                            <span class="txt" translate=""><span class="ng-scope">Edit Profile</span></span>
+                            <i className="icon icon-pencil" aria-hidden="true"></i>
+                            <span className="txt" translate=""><span className="ng-scope">Edit Profile</span></span>
                         </button>
                     </article>
                 </section>
