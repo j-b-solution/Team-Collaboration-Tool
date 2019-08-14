@@ -6,7 +6,17 @@ import { isLoggedIn  }  from '../../helpers/auth';
 
 class Header extends Component {
     state={
-        user: sessionStorage.getItem('user')
+        user: sessionStorage.getItem('user'),
+        isLoggedIn: this.props.isLoggedIn
+    }
+
+    componentDidUpdate(nextProps) {
+        if(nextProps.isLoggedIn !== this.props.isLoggedIn) {
+            this.setState({ 
+                isLoggedIn: this.props.isLoggedIn,
+                user: sessionStorage.getItem('user')
+            })
+        }
     }
 
     _userLogout = () => {
@@ -17,15 +27,16 @@ class Header extends Component {
         }).then(res => {
             sessionStorage.clear();
             this.setState({
-                user: ''
+                user: sessionStorage.getItem('user'),
+                isLoggedIn: false
             })
         }).catch(err => {
             console.log(err);
         })
     }
-
     render() {
-        const { user } = this.state;
+        const { user, isLoggedIn } = this.state;
+        console.log(this.state)
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light static-top">
                 <div className="container">
@@ -54,16 +65,16 @@ class Header extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
                             </li>
-                            { isLoggedIn() ? 
+                            { isLoggedIn ? 
                                 (
-                                    <li class="nav-item dropdown right">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, {user}</a>
-                                        <div class="dropdown-menu">
-                                        <Link class="dropdown-item" to='/'>View Profile</Link>
+                                    <li className="nav-item dropdown right">
+                                        <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, {user}</a>
+                                        <div className="dropdown-menu">
+                                        <Link className="dropdown-item" to='/'>View Profile</Link>
                                         
-                                        <div class="dropdown-divider"></div>
-                                        <Link class="dropdown-item" to="/dashboard">Go to Dashboard</Link>
-                                        <Link class="dropdown-item" onClick={this._userLogout}>Logout</Link>
+                                        <div className="dropdown-divider"></div>
+                                        <Link className="dropdown-item" to="/dashboard">Go to Dashboard</Link>
+                                        <Link className="dropdown-item" onClick={this._userLogout} to='/'>Logout</Link>
                                         </div>
 
                                     </li>

@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+// import { positions, Provider } from "react-alert";
+// import AlertTemplate from "react-alert-template-basic";
+
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { isLoggedIn  }  from '../helpers/auth';
 
@@ -13,17 +17,25 @@ import Register from './auth/register';
 import Main from './main';
 import Dashboard from './dashboard';
 
+// const options = {
+//     timeout: 5000,
+//     position: positions.BOTTOM_CENTER
+//   };
 const App = () =>  {
         return (
-            <div className="App">
-                <Router>
-                    <Switch>
-                        <Route exact path='/dashboard' component={DashboardContainer}/>
-                        <Route component={DefaultContainer} />             
-                    </Switch>
+            // <Provider template={AlertTemplate} {...options}>
 
-                </Router>
-            </div>
+                <div className="App">
+                    <Router>
+                        <Switch>
+                            <Route exact path='/dashboard' component={DashboardContainer}/>
+                            <Route component={DefaultContainer} />             
+                        </Switch>
+
+                    </Router>
+                </div>
+            // </Provider>
+
         )
 }
 
@@ -35,7 +47,7 @@ const DashboardContainer = () => (
 
 const DefaultContainer = () => (
     <div>
-        <Header />       
+        <Header isLoggedIn={isLoggedIn()}/>       
         <Route exact path='/' component={Home} />
         {
             isLoggedIn() ? 

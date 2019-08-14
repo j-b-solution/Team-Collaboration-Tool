@@ -4,7 +4,9 @@ import { BrowserRouter as  Route, Link } from "react-router-dom";
 import LoginForm from './_loginForm';
 import ForgetPassword from './_forgetPassword';
 
+
 class Login extends Component {
+    
     state ={
         username: '',
         password: '',
@@ -39,6 +41,7 @@ class Login extends Component {
                 sessionStorage.setItem("token", res.token);
 
                 this.props.history.push('/main');
+            }else {
             }
         }).catch(err => {
             console.log(err);
