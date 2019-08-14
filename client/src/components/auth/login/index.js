@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as  Route, Link } from "react-router-dom";
+import { withAlert } from 'react-alert'
 
 import LoginForm from './_loginForm';
 import ForgetPassword from './_forgetPassword';
-
 
 class Login extends Component {
     
@@ -39,15 +39,15 @@ class Login extends Component {
             if(res.success){
                 sessionStorage.setItem("user", this.state.username);
                 sessionStorage.setItem("token", res.token);
-
+                this.props.alert.success(res.msg);
                 this.props.history.push('/main');
             }else {
+                this.props.alert.error(res.msg);
             }
         }).catch(err => {
             console.log(err);
         })
     }
-
     render() {
         return (
             <div className="Login_Container">
@@ -62,4 +62,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withAlert()(Login);

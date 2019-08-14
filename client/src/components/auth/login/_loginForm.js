@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LoginForm = ({onChange, onSubmit}) => {
+
     return (
         <form className="login_form" onSubmit={onSubmit}>
             <input className="inputTextBox" name="username" type="text" placeholder="username" onChange={onChange}/>

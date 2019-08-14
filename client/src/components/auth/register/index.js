@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import RegisterForm from './_registerForm';
 import { BrowserRouter as  Route, Link } from "react-router-dom";
+import { withAlert } from 'react-alert'
 
 class Register extends Component {
     state={
@@ -35,7 +36,10 @@ class Register extends Component {
                 return res.json();
             }).then(res => {
                 if(res.success) {
+                    this.props.alert.success(res.msg);
                     this.props.history.push('/login');
+                }else {
+                    this.props.alert.error(res.msg);
                 }
             }).catch(err =>{
                 console.log(err);
@@ -55,4 +59,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default withAlert()(Register);

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as  Route, Link } from "react-router-dom";
+import { withAlert } from 'react-alert'
 
 import Image_logo from "../../assets/images/logo_main.png"
-import { isLoggedIn  }  from '../../helpers/auth';
 
 class Header extends Component {
     state={
@@ -19,24 +19,28 @@ class Header extends Component {
         }
     }
 
-    _userLogout = () => {
+    _userLogout = (e) => {
+        e.preventDefault();
         fetch ('http://localhost:8080/api/auth/logout', {
             method: 'GET'
         }).then(res => {
-                res.json();
+            return res.json();
         }).then(res => {
-            sessionStorage.clear();
-            this.setState({
-                user: sessionStorage.getItem('user'),
-                isLoggedIn: false
-            })
+            if(res.success) {
+                this.props.alert.success(res.msg);
+                sessionStorage.clear();
+                this.setState({
+                    user: sessionStorage.getItem('user'),
+                    isLoggedIn: false
+                })
+            }
+
         }).catch(err => {
             console.log(err);
         })
     }
     render() {
         const { user, isLoggedIn } = this.state;
-        console.log(this.state)
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light static-top">
                 <div className="container">
@@ -94,4 +98,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withAlert()(Header);
