@@ -40,7 +40,7 @@ class Login extends Component {
                 sessionStorage.setItem("user", this.state.username);
                 sessionStorage.setItem("token", res.token);
                 this.props.alert.success(res.msg);
-                this.props.history.push('/main');
+                this.props.history.push(`/${res.user.id}/main`);
             }else {
                 this.props.alert.error(res.msg);
             }

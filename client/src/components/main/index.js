@@ -5,13 +5,21 @@ import React, { Component } from 'react';
 import TeamList from './_teamList';
 import UserProfile from './_userProfile';
 
-class Main extends Component {
 
+
+class Main extends Component {
+    state = {
+        id: this.props.match.params.id,
+        userProfile: this.props.userProfile
+    }
     render() {
+        const { id, userProfile } = this.state; 
+        const name = userProfile.firstName + ' ' + userProfile.lastName;
         return (
-            <div className="wrap fade _wrap in">
+            <div className="Main_Container">
             
-            <UserProfile/>
+
+            <UserProfile id={id} name = {name} email={userProfile.email}/>
             <TeamList/>
             
             </div>

@@ -15,13 +15,16 @@ export function userId(){
  return sessionStorage.getItem('user')
 }
 
-export function decodeToken(jwtToken) {
+export function decodeTokenToJson() {
     try {
-        const decoded = decode(jwtToken);
-        
-    }catch {
-        
+        if(sessionStorage.getItem('token')) {
+            const decoded = decode(sessionStorage.getItem('token'));
+            return decoded;
+        }
+        return ;
+    }catch(error) {
+        return error;
     }
 }
 
-export default { isLoggedIn, userId };
+export default { isLoggedIn, userId, decodeTokenToJson };
