@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-
-// import CreateTeambtn from './_createTeambtn';
-// import Header from './_header';
-import TeamList from './_teamList';
 import UserProfile from './_userProfile';
+import TeamList from './team';
 
 
 
@@ -20,8 +17,8 @@ class Main extends Component {
             
 
             <UserProfile id={id} name = {name} email={userProfile.email}/>
-            <TeamList/>
             
+            <TeamList />
             </div>
         );
     }
