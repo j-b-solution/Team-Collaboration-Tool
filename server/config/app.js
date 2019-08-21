@@ -5,8 +5,6 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let cors = require('cors');
 
-
-
 // modules for authentication
 let session = require('express-session');
 let passport = require('passport');
@@ -33,6 +31,9 @@ mongoDB.once('open', () => {
 });
 
 let authRouter = require('../routes/auth');
+let chatRouter = require("../routes/chatRoute");
+let dateTime = require("simple-datetime-formater");
+
 
 let app = express();
 
@@ -79,19 +80,20 @@ let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = DB.secret;
 
-let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>{
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
     User.findById(jwt_payload.id)
         .then(user => {
-        return done(null, user);
-    })
-    .catch(err =>{
-        return done(err, false);
-    });
+            return done(null, user);
+        })
+        .catch(err => {
+            return done(err, false);
+        });
 });
 
 passport.use(strategy);
 
 app.use('/api/auth', authRouter);
+app.use('/dashboard', chatRouter);
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/public/index.html'));
 });
@@ -111,5 +113,6 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
 
 module.exports = app;

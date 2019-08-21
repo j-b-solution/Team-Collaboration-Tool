@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputBox from './_inputBox';
-import socketio from 'socket.io-client'
+import socketio from 'socket.io-client';
 
 const socket = socketio.connect('http://localhost:8080')
 

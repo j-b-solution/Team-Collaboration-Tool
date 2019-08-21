@@ -100,7 +100,22 @@ io.on('connection', (socket) => {
   // get msg
   socket.on('chat-msg', (msg) => {
     console.log('message:', msg)
-  // sending message to connected user
+    // sending message to connected user
     io.emit('chat-msg', msg)
-  })
-})
+  });
+  io.on("chat message", function (msg) {
+    console.log("message: " + msg);
+    //Boadcast message to everyone in port:3000 except yourself.
+    io.broadcast.emit("received", { message: msg });
+    //save chat to the database
+    connect.then(db => {
+      console.log("connected correctly to the server");
+      let chatMessage = new Chat({ message: msg, username: sessionStorage.getItem('user') });
+      chatMessage.save();
+    });
+  });
+});
+
+//database connection
+const Chat = require("./server/models/chat");
+const connect = require("./server/config/db");

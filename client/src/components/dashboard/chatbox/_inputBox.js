@@ -1,7 +1,7 @@
 import React from 'react';
-import socketio from 'socket.io-client'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import socketio from 'socket.io-client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 const socket = socketio.connect('http://localhost:8080')
