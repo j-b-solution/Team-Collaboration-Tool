@@ -43,8 +43,6 @@ class Header extends Component {
         })
     }
     render() {
-        console.log(this.state);
-        console.log(this.props);
         const { user, userProfile, isLoggedIn } = this.state;
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light static-top">

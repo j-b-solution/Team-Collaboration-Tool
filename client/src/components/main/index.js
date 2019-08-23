@@ -18,7 +18,7 @@ class Main extends Component {
 
             <UserProfile id={id} name = {name} email={userProfile.email}/>
             
-            <TeamList />
+            <TeamList {...this.props} id={id}/>
             </div>
         );
     }

@@ -17,6 +17,7 @@ import Register from './auth/register';
 import Main from './main';
 import Dashboard from './dashboard';
 import EditUser from './user/edit';
+import AddTeam from './main/team/addTeam';
 
 const options = {
     timeout: 5000,
@@ -60,6 +61,7 @@ const DefaultContainer = () => (
         <Route exact path='/register' component={Register} />
 
         <Route exact path='/:id/main' render={(props) => <Main {...props} userProfile={decodeTokenToJson()} />} />
+        <Route exact path='/:id/main/add-team' component={AddTeam} />
         <Route exact path="/:id/edit" component={EditUser} />
 
         <Footer />
