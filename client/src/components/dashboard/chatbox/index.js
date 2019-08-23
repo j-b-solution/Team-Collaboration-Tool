@@ -16,11 +16,13 @@ class ChatBox extends Component {
     componentDidMount() {
         // 실시간으로 로그를 받게 설정
         socket.on('chat-msg', (obj) => {
+            console.log(obj)
             const logs2 = this.state.logs
             obj.key = 'key_' + (this.state.logs.length + 1)
-            console.log(obj)
-            logs2.unshift(obj)
-            this.setState({ logs: logs2 })
+            // logs2.unshift(obj)
+            this.setState({ 
+                logs: logs2.concat(obj)
+            })
         })
     }
     render() {
