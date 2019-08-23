@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
+import { BrowserRouter as  Route, Link } from "react-router-dom";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+
+import MainTitle from './_title'
 import Image_logo from "../../assets/images/logo.png";
 
-class UserProfile extends Component {
-    render() {
-        return (
-            <article>
-            <div className="userProfile_body">
+const UserProfile = ({id, name, email}) => {
+    return (
+        <div className="userProfile_body">
                 <section className="section main_account">
-                    <header className="section_head">
-                        <h3 className="section_title">Account Settings</h3>
-                    </header>
+                    <MainTitle title="Account Settings" />
                     <article className="section_body">
                         <dl className="user-profile-wrap">
                             <dt className="teamlist_user_name">
-                                <span>User-Name</span></dt>
+                                <span>{name}</span></dt>
                             <dd className="img-user-profile" >
                                 <img className="img" src={Image_logo} alt="user profile image" />
                             </dd>
                             <dd className="teamlist_user_email">
-                                <span className="user_email">User-Email</span>
+                                <span className="user_email">{email}</span>
                             </dd>
                         </dl>
-                        <button type="button" className="btn-profile-edit">
-                            <i className="icon icon-pencil" aria-hidden="true"></i>
-                            <span className="txt" translate=""><span className="ng-scope">Edit Profile</span></span>
-                        </button>
+                        <dl className="btn-profile-edit">
+                            <Link to={{pathname: `/${id}/edit`, component: '../user/edit'}}><FontAwesomeIcon icon={faEdit} />Edit Profile</Link>
+                        </dl>
+
                     </article>
                 </section>
-            </div>
-        </article>
-        );
-    }
+        </div>
+    )
 }
 
 export default UserProfile;

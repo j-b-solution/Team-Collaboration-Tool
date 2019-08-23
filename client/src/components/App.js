@@ -1,10 +1,10 @@
 import React from 'react';
 
-// import { positions, Provider } from "react-alert";
-// import AlertTemplate from "react-alert-template-basic";
+import { transitions, positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import { isLoggedIn  }  from '../helpers/auth';
+import { isLoggedIn, decodeTokenToJson  }  from '../helpers/auth';
 
 
 import Header from "../components/common/Header";
@@ -16,14 +16,17 @@ import Register from './auth/register';
 
 import Main from './main';
 import Dashboard from './dashboard';
+import EditUser from './user/edit';
+import AddTeam from './main/team/addTeam';
 
-// const options = {
-//     timeout: 5000,
-//     position: positions.BOTTOM_CENTER
-//   };
+const options = {
+    timeout: 5000,
+    position: positions.BOTTOM_RIGHT,
+    transition: transitions.SCALE
+  };
 const App = () =>  {
         return (
-            // <Provider template={AlertTemplate} {...options}>
+            <Provider template={AlertTemplate} {...options}>
 
                 <div className="App">
                     <Router>
@@ -34,7 +37,7 @@ const App = () =>  {
 
                     </Router>
                 </div>
-            // </Provider>
+            </Provider>
 
         )
 }
@@ -47,7 +50,7 @@ const DashboardContainer = () => (
 
 const DefaultContainer = () => (
     <div>
-        <Header isLoggedIn={isLoggedIn()}/>       
+        <Header isLoggedIn={isLoggedIn()} userProfile={decodeTokenToJson()}/>       
         <Route exact path='/' component={Home} />
         {
             isLoggedIn() ? 
@@ -57,7 +60,9 @@ const DefaultContainer = () => (
         }
         <Route exact path='/register' component={Register} />
 
-        <Route exact path='/main' component={Main} />
+        <Route exact path='/:id/main' render={(props) => <Main {...props} userProfile={decodeTokenToJson()} />} />
+        <Route exact path='/:id/main/add-team' component={AddTeam} />
+        <Route exact path="/:id/edit" component={EditUser} />
 
         <Footer />
     </div>

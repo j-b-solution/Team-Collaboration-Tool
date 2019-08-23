@@ -1,42 +1,49 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as  Route, Link } from "react-router-dom";
+import { withAlert } from 'react-alert'
 
 import Image_logo from "../../assets/images/logo_main.png"
-import { isLoggedIn  }  from '../../helpers/auth';
 
 class Header extends Component {
     state={
         user: sessionStorage.getItem('user'),
+        userProfile: this.props.userProfile,
         isLoggedIn: this.props.isLoggedIn
     }
 
     componentDidUpdate(nextProps) {
+
         if(nextProps.isLoggedIn !== this.props.isLoggedIn) {
             this.setState({ 
                 isLoggedIn: this.props.isLoggedIn,
+                userProfile: this.props.userProfile,
                 user: sessionStorage.getItem('user')
             })
         }
     }
 
-    _userLogout = () => {
+    _userLogout = (e) => {
         fetch ('http://localhost:8080/api/auth/logout', {
             method: 'GET'
         }).then(res => {
-                res.json();
+            return res.json();
         }).then(res => {
-            sessionStorage.clear();
-            this.setState({
-                user: sessionStorage.getItem('user'),
-                isLoggedIn: false
-            })
+            if(res.success) {
+                this.props.alert.success(res.msg);
+                sessionStorage.clear();
+                this.setState({
+                    user: sessionStorage.getItem('user'),
+                    isLoggedIn: false,
+                    userProfile: null
+                })
+            }
+
         }).catch(err => {
             console.log(err);
         })
     }
     render() {
-        const { user, isLoggedIn } = this.state;
-        console.log(this.state)
+        const { user, userProfile, isLoggedIn } = this.state;
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light static-top">
                 <div className="container">
@@ -59,25 +66,28 @@ class Header extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/download">Download</Link>
                             </li>
-                            <li className="nav-item">
-                            <Link className="nav-link" to="/main">Main</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                            </li>
+
                             { isLoggedIn ? 
                                 (
-                                    <li className="nav-item dropdown right">
-                                        <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, {user}</a>
-                                        <div className="dropdown-menu">
-                                        <Link className="dropdown-item" to='/'>View Profile</Link>
-                                        
-                                        <div className="dropdown-divider"></div>
-                                        <Link className="dropdown-item" to="/dashboard">Go to Dashboard</Link>
-                                        <Link className="dropdown-item" onClick={this._userLogout} to='/'>Logout</Link>
-                                        </div>
+                                    <Fragment>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to={{pathname: `/${userProfile.id}/main`, component: '../main'}}> Main</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                                        </li>
+                                        <li className="nav-item dropdown right">
+                                            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, {user}</a>
+                                            <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to={{pathname: `/${userProfile.id}/edit`, component: '../user/edit'}}>Edit Profile</Link>
+                                            
+                                            <div className="dropdown-divider"></div>
+                                            <Link className="dropdown-item" to="/dashboard">Go to Dashboard</Link>
+                                            <Link className="dropdown-item" onClick={this._userLogout} to='/'>Logout</Link>
+                                            </div>
 
-                                    </li>
+                                        </li>
+                                    </Fragment>
                                 ) 
                                 :
                                 (
@@ -94,4 +104,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withAlert()(Header);

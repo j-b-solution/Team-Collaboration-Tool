@@ -19,7 +19,7 @@ module.exports.processLoginPage = (req, res, next) => {
             return next(err);
         }
         if(!user) {
-            return res.json({success: false, msg: 'ERROR: Failed to log in User!'});
+            return res.json({success: false, msg: 'Failed to log in User!'});
         }
         req.logIn(user, (err) => {
             if(err){
@@ -59,11 +59,11 @@ module.exports.processRegisterPage = (req, res, next) => {
     User.register(newUser, req.body.password, (error) => {
         if(error) {
             console.log('Error occuring: Inserting new user');
-            if(error.name == "UserExisstError") {
-                console.log('Error: User Already Exists');
+            if(error.name == "UserExistError") {
+                console.log('User Already Exists');
             }
             console.log(error);
-            return res.json({success: false, msg: 'ERROR: Failed to Register new user!'});
+            return res.json({success: false, msg: 'Failed to Register new user!'});
         } else {
             return passport.authenticate("local")(req, res, () => {
                 return res.json( {success: true, msg: 'User registered successfully!'});
