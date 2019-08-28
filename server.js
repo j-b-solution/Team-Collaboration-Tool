@@ -32,7 +32,6 @@ server.on('listening', onListening);
 //implement web socketio. 
 const socketio = require('socket.io')
 const io = socketio.listen(server)
-
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -94,13 +93,52 @@ function onListening() {
 }
 
 
-//user connect event 
-io.on('connection', (socket) => {
-  console.log('user connected:', socket.client.id)
-  // get msg
-  socket.on('chat-msg', (msg) => {
-    console.log('message:', msg)
-  // sending message to connected user
-    io.emit('chat-msg', msg)
+// //user connect event 
+// io.on('connection', (socket) => {
+//   console.log('user connected:', socket.client.id)
+//   // get msg
+//   socket.on('chat-msg', (msg) => {
+//     console.log('message:', msg)
+//     // sending message to connected user
+//     io.emit('chat-msg', msg)
+//   });
+//   io.on("chat message", function (msg) {
+//     console.log("message: " + msg);
+//     //Boadcast message to everyone in port:3000 except yourself.
+//     io.broadcast.emit("received", { message: msg });
+//     //save chat to the database
+//     connect.then(db => {
+//       console.log("connected correctly to the server");
+//       let chatMessage = new Chat({ message: msg, username: sessionStorage.getItem('user') });
+//       chatMessage.save();
+//     });
+//   });
+// });
+const chatModel = require("./server/models/chat");
+
+var chat = io
+  // .of('/dashboard')
+  .on('connection', (socket) => {
+    console.log('user connected')
+    socket.on('chat-msg', (msg) => {
+      io.emit('chat-msg', msg)
+      let newChat =chatModel({
+        "username": msg.name,
+        "message": msg.message
+      });
+
+      chatModel.create(newChat, (err, chatModel) => {
+        if(err) {
+          console.log(err);
+        }
+    });
+      console.log(msg)
+    });
+
   })
-})
+
+
+
+//database connection
+
+const connect = require("./server/config/db");
