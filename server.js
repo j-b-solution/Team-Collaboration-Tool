@@ -92,28 +92,6 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-
-// //user connect event 
-// io.on('connection', (socket) => {
-//   console.log('user connected:', socket.client.id)
-//   // get msg
-//   socket.on('chat-msg', (msg) => {
-//     console.log('message:', msg)
-//     // sending message to connected user
-//     io.emit('chat-msg', msg)
-//   });
-//   io.on("chat message", function (msg) {
-//     console.log("message: " + msg);
-//     //Boadcast message to everyone in port:3000 except yourself.
-//     io.broadcast.emit("received", { message: msg });
-//     //save chat to the database
-//     connect.then(db => {
-//       console.log("connected correctly to the server");
-//       let chatMessage = new Chat({ message: msg, username: sessionStorage.getItem('user') });
-//       chatMessage.save();
-//     });
-//   });
-// });
 const chatModel = require("./server/models/chat");
 
 var chat = io
@@ -122,16 +100,15 @@ var chat = io
     console.log('user connected')
     socket.on('chat-msg', (msg) => {
       io.emit('chat-msg', msg)
-      let newChat =chatModel({
+      let newChat = chatModel({
         "username": msg.name,
         "message": msg.message
       });
-
       chatModel.create(newChat, (err, chatModel) => {
-        if(err) {
+        if (err) {
           console.log(err);
         }
-    });
+      });
       console.log(msg)
     });
 
