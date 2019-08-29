@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 let authController = require('../controllers/auth');
+let chatController = require('../controllers/chat')
 
 /* POST - processes the Login Page */
 router.post('/login', authController.processLoginPage);
@@ -12,5 +13,6 @@ router.post('/register', authController.processRegisterPage);
 // /* GET - perform user logout */
 router.get('/logout', authController.performLogout);
 
+router.post('/dashboard',chatController.chatHistory);
 
 module.exports = router;

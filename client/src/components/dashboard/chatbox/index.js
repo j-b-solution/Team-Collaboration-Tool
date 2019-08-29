@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputBox from './_inputBox';
 import socketio from 'socket.io-client'
+import { json } from 'body-parser';
 
 const socket = socketio.connect('http://localhost:8080')
 
@@ -9,11 +10,30 @@ class ChatBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            msg: [],
             logs: []
         }
     }
-    // 컴포넌트가 마운트됐을 때 --- (※5)
     componentDidMount() {
+        fetch('http://localhost:8080/api/auth/dashboard')
+            .then(res => {
+                return res.json()
+            })
+            .then(
+                data => {
+                    this.setState({
+                        msg: data
+                    });
+                },
+                error => {
+                    this.setState({
+                        error: error
+                    });
+                },
+                console.log(this.state.msg)
+            );
+    }
+    componentWillMount() {
         // 실시간으로 로그를 받게 설정
         socket.on('chat-msg', (obj) => {
             const logs2 = this.state.logs
@@ -21,12 +41,19 @@ class ChatBox extends Component {
             console.log(obj)
             logs2.unshift(obj)
             this.setState({ logs: logs2 })
-        })
+            })
     }
     render() {
         const messages = this.state.logs.map(e => (
             <div key={e.key}>
                 <span>{e.name}</span>
+                <span> : {e.message}</span>
+                <p />
+            </div>
+        ))
+        const chat = this.state.msg.map(e => (
+            <div>
+                <span>{e.username}</span>
                 <span> : {e.message}</span>
                 <p />
             </div>
@@ -39,6 +66,9 @@ class ChatBox extends Component {
                     <p className="ChatBox_desc">{description}</p>
                 </div>
                 <div className="ChatBox_msg">
+                    <ul id="chatting">
+                        <div>{chat}</div>
+                    </ul>
                     <div>{messages}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">
