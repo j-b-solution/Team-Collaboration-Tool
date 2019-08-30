@@ -14,9 +14,7 @@ class TeamList extends Component {
                 <section className="userProfile_body">
                     <MainTitle title="Team List" />
                     <Team />
-                    <Team />
-                    <Team />
-                    <Team />
+
                     <AddButton {...this.props} />
                 </section>
         </article>
