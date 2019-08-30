@@ -30,7 +30,6 @@ class ChatBox extends Component {
                         error: error
                     });
                 },
-                console.log(this.state.msg)
             );
     }
     componentWillMount() {
@@ -38,9 +37,9 @@ class ChatBox extends Component {
         socket.on('chat-msg', (obj) => {
             const logs2 = this.state.logs
             obj.key = 'key_' + (this.state.logs.length + 1)
-            console.log(obj)
-            logs2.unshift(obj)
-            this.setState({ logs: logs2 })
+            this.setState({
+                logs: logs2.concat(obj)
+            })
         })
     }
     render() {
