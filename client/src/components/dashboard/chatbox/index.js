@@ -41,7 +41,7 @@ class ChatBox extends Component {
             console.log(obj)
             logs2.unshift(obj)
             this.setState({ logs: logs2 })
-            })
+        })
     }
     render() {
         const messages = this.state.logs.map(e => (
@@ -66,9 +66,7 @@ class ChatBox extends Component {
                     <p className="ChatBox_desc">{description}</p>
                 </div>
                 <div className="ChatBox_msg">
-                    <ul id="chatting">
-                        <div>{chat}</div>
-                    </ul>
+                    <div>{chat}</div>
                     <div>{messages}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">

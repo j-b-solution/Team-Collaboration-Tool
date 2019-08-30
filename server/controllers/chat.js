@@ -3,42 +3,33 @@ let express = require("express");
 let passport = require("passport");
 let router = express.Router();
 let mongoose = require("mongoose");
+let bodyparser = require("body-parser")
 
-var mongo = require('mongodb'),
-    Server = mongo.Server,
-    DB = mongo.Db;
-var server = new Server('localhost', 27017,{
-    auto_reconnect: true
-});
-var db = DB('test', server)
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017';
+
 
 let jwt = require("jsonwebtoken");
-// let DB = require("../config/db");
 
-// define the Chat Model
-const chatModel = require("./../models/chat");
-let chatList = chatModel.chatList;
-
-module.exports.chatHistory = (req, res, next) => {
-    console.log("이씨발왜안돼")
-    res.setHeader("Content-Type", "application/json");
-    res.statusCode = 200;
-
-    DB.open(db => {
-        db.collection('chatList', chatList => {
-            chatList.find({})
-            .then(res => {
-                res.json(res);
-            })
-        })
+module.exports.chatHistory = async (req, res, next) => {
+    const client = await MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     })
-
-
-    // DB.then(db => {
-    //     data = chatList.find({});
-    //     chatList.find({}).then(res => {
-    //         res.json(res);
-    //         res.render;
-    //     });
-    // });
+        .catch(err => { console.log(err); });
+    if (!client) {
+        return;
+    }
+    try {
+        const db = client.db("test");
+        let collection = db.collection('chatList');
+        let query = { username: '' }
+        let data = await collection.find({}).toArray();
+        console.log(data)
+        res.json(data)
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client.close();
+    }
 }
