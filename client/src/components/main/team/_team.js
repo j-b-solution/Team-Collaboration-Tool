@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Image_logo from "../../../assets/images/logo.png";
 import { BrowserRouter as  Route, Link } from "react-router-dom";
 
-const Team = ({id,name, owner, img}) => {
+const Team = ({id, name, owner, img}) => {
     return (
         <article className="section team_list">
             <article className="team">
@@ -14,11 +14,11 @@ const Team = ({id,name, owner, img}) => {
                             <dt className="teamlist_user_name">
                                 <span>{name}</span></dt>
                                 <dd className="teamlist_user_email">
-                                <span className="user_email">{owner}</span></dd>                                        
+                                <span className="user_email">Created by {owner}</span></dd>                                        
                             <div className="btn-box btn-s1 rsp">
                                 <button type="button" className="btn Setting"><span translate=""><span>Settings</span></span></button>
                                 {/* <Link to={{pathname: `/dashboard/${id}`, component: '../user/edit'}}><button type="button" className="btn Launch"><span translate=""><span >LAUNCH</span></span></button></Link> */}
-                                <Link to={{pathname: `/dashboard`, component: '../user/edit'}}><button type="button" className="btn Launch"><span translate=""><span >LAUNCH</span></span></button></Link>
+                                <Link to={{pathname: `/dashboard/${id}`}}><button type="button" className="btn Launch"><span translate=""><span >LAUNCH</span></span></button></Link>
                             </div>
                         </dl>
                     </div>

@@ -1,0 +1,44 @@
+.addTeam_container {
+    margin: 7rem auto;
+    text-align: center;
+    width: 700px;
+    .create-title {
+        font-size: $m-size;
+        color:$key-color;
+    }
+    .addTeam-form {
+        margin: 4rem auto;
+        .inputTextBox {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0;
+            margin: 15px 0;
+            border: none;
+            background: #e5e5e5;
+            text-indent: 30px;
+            text-transform: none;
+            line-height: 20px;
+            border-radius: 20px;
+            font-size: $ss-size;
+            &:focus {
+                outline: none;
+                background-color: #e5e5e5;
+            }
+        }
+        .btnAdd {
+            display: block;
+            width: 30%;
+            padding: 0.5rem 0;
+            margin: 4rem auto;
+            border: none;
+            font-weight: bold;
+            background-color: $key-color;
+            color: white;
+            text-transform: none;
+            line-height: 20px;
+            border-radius: 20px;
+            font-size: $ss-size;
+            cursor: pointer;
+        }
+    }
+}
