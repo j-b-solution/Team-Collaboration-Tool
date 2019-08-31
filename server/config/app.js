@@ -33,7 +33,7 @@ mongoDB.once('open', () => {
 });
 
 let authRouter = require('../routes/auth');
-
+let teamRouter = require('../routes/team');
 let app = express();
 
 app.set('views', path.join(__dirname, '../views'));
@@ -92,6 +92,7 @@ let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>{
 passport.use(strategy);
 
 app.use('/api/auth', authRouter);
+app.use('/api/team', teamRouter)
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/public/index.html'));
 });

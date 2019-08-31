@@ -1,6 +1,6 @@
-    let mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-    let teamSchema = mongoose.Schema({
+let teamSchema = mongoose.Schema({
             name:{
                 type: String,
                 default: "",
@@ -11,9 +11,13 @@
                 type: String,
                 default: ""
             },
-            owner: {
-                type:Schema.Types.ObjectId,
+            owner_id: {
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'User'
+            },
+            owner_username: {
+                type: String,
+                default: ""
             },
             created: {
                 type: Date,
@@ -23,4 +27,4 @@
             collection: "teamList"
         });
     
-    module.exports = mongoose.model('team', teamSchema);
+    module.exports = mongoose.model('Team', teamSchema);

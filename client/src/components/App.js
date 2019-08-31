@@ -31,7 +31,7 @@ const App = () =>  {
                 <div className="App">
                     <Router>
                         <Switch>
-                            <Route exact path='/dashboard' component={DashboardContainer}/>
+                            <Route exact path='/dashboard/:team_id' component={DashboardContainer}/>
                             <Route component={DefaultContainer} />             
                         </Switch>
 
@@ -44,7 +44,7 @@ const App = () =>  {
 
 const DashboardContainer = () => (
     <div>
-        <Route exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/dashboard/:team_id' component={Dashboard} />
     </div>
 );
 
