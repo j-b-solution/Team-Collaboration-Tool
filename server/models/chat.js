@@ -11,6 +11,10 @@ const chatSchema = mongoose.Schema(
         trim: true,
         require: "username is required"
     },
+    team_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Team'
+    },
     created: {
       type: Date,
       default: Date.now

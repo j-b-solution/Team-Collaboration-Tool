@@ -20,7 +20,8 @@ class InputBox extends React.Component {
     send() {
         socket.emit('chat-msg', {
             name: sessionStorage.getItem('user'),
-            message: this.state.message
+            message: this.state.message,
+            team_id: this.props.team_id
         })
         this.setState({ message: '' }) // initialize msg box after send msg
     }

@@ -10,28 +10,27 @@ class ChatBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            team_id: this.props.match.params.team_id,
             msg: [],
             logs: []
         }
     }
     componentDidMount() {
-        fetch('http://localhost:8080/api/auth/dashboard')
+        fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}`)
             .then(res => {
                 return res.json()
             })
-            .then(
-                data => {
-                    this.setState({
-                        msg: data
-                    });
-                },
-                error => {
-                    this.setState({
-                        error: error
-                    });
-                },
-                console.log(this.state.msg)
-            );
+            .then(data => {
+                this.setState({
+                    msg: data.chatList
+                });
+            },
+            error => {
+                this.setState({
+                    error: error
+                });
+            },
+        );
     }
     componentWillMount() {
         // 실시간으로 로그를 받게 설정
@@ -39,11 +38,11 @@ class ChatBox extends Component {
             const logs2 = this.state.logs
             obj.key = 'key_' + (this.state.logs.length + 1)
             console.log(obj)
-            logs2.unshift(obj)
-            this.setState({ logs: logs2 })
+            this.setState({ logs: logs2.concat(obj) })
         })
     }
     render() {
+        console.log(this.state)
         const messages = this.state.logs.map(e => (
             <div key={e.key}>
                 <span>{e.name}</span>
@@ -70,7 +69,7 @@ class ChatBox extends Component {
                     <div>{messages}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">
-                    <InputBox />
+                    <InputBox team_id={this.state.team_id}/>
                 </div>
             </div>
         )

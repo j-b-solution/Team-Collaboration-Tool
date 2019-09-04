@@ -12,7 +12,7 @@ class Dashboard extends Component {
                         <SearchBox />
                 </div>
                 <div className="Db_mid_7">
-                    <ChatBox />
+                    <ChatBox {...this.props} />
                 </div>
                 <div className="Db_right_1">
                     TODO:  additional functions
