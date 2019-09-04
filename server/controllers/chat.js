@@ -15,7 +15,7 @@ let jwt = require("jsonwebtoken");
 module.exports.chatHistory = async (req, res, next) => {
     let id = req.params.id;
 
-    chatModel.find({team_id: id}, (err, chatList) => {
+    chatModel.find({team_id: id}).sort({created: 1}).exec((err, chatList) => {
         if(err) {
             console.log(err);
             res.end(err);
