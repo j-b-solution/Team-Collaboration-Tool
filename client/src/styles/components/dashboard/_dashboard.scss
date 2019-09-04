@@ -5,7 +5,7 @@
     //Left Grid
     .Db_left_4{
         width: 20%;
-        background-color: $key-color;
+        
         border-right: 0.5px solid #969696;
         //_teamLogo.js
         .teamLogo_container {
@@ -82,7 +82,7 @@
 
     // Mid Grid
     .Db_mid_7 {
-        width: 75%;
+        width: 80%;
         .ChatBox_Container {
             .ChatBox_titleBox {
                 min-height: 55px;
@@ -100,20 +100,42 @@
                 }
             }
             .ChatBox_msg {
+                overflow-y: scroll;
+                max-height: 80vh;
                 min-height: 80vh;
                 background-color: #e6e6e6;
                 padding: 20px;
+                .dateSeparator {
+                    color: red;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    span {
+                        margin: 0 20px;
+                    }
+                    &:before {
+                        border-bottom: 1px solid #ff6b6b;
+                        content: '';
+                        flex: 1;
+                        position: relative;
+                    }
+                    &:after {
+                        border-bottom: 1px solid #ff6b6b;
+                        content: '';   
+                        flex: 1;
+                        position: relative;
+                    }
+                }
             }
             .ChatBox_msg_inputBox {
                 border-top: 0.5px solid #e3e3e3;
-                min-height: 100px;
+                height: 100px;
                 .InputBox_Body {
                     width: 100%;
-                    margin: 20px 0;
                     display: inline-flex;
                     .Chat{
-                        width: calc(100% - 60px);
-                        margin: 9px 9px 9px 20px;
+                        width: calc(100% - 100px);
+                        margin: 9px auto 9px auto;
                         position: relative;
                     
                     }
@@ -127,7 +149,7 @@
                         }
                     }
                     .Body_Textbox {
-                        width: 90%;
+                        width: 85%;
                         height: 80px;
                         text-indent: 20px;
                         text-align: left;
@@ -141,6 +163,9 @@
                         color: white;
                         border: none;
                         border-radius: 10%;
+                        &:disabled {
+                            opacity: 0.9;
+                        }
                     }
                 }
             }

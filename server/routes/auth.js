@@ -13,6 +13,6 @@ router.post('/register', authController.processRegisterPage);
 // /* GET - perform user logout */
 router.get('/logout', authController.performLogout);
 
-router.get('/dashboard',chatController.chatHistory);
+router.get('/dashboard/:id',chatController.chatHistory);
 
 module.exports = router;

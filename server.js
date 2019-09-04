@@ -100,9 +100,11 @@ var chat = io
     console.log('user connected')
     socket.on('chat-msg', (msg) => {
       io.emit('chat-msg', msg)
+      console.log(msg)
       let newChat = chatModel({
         "username": msg.name,
-        "message": msg.message
+        "message": msg.message,
+        "team_id": msg.team_id
       });
       chatModel.create(newChat, (err, chatModel) => {
         if (err) {
@@ -113,9 +115,3 @@ var chat = io
     });
 
   })
-
-
-
-//database connection
-
-const connect = require("./server/config/db");
