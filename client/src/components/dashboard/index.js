@@ -14,9 +14,10 @@ class Dashboard extends Component {
                 <div className="Db_mid_7">
                     <ChatBox {...this.props} />
                 </div>
-                <div className="Db_right_1">
+                
+                {/* <div className="Db_right_1">
                     TODO:  additional functions
-                </div>
+                </div> */}
             </div>
         )
     }

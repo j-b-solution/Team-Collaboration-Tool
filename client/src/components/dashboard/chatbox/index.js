@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import InputBox from './_inputBox';
 import socketio from 'socket.io-client'
@@ -41,22 +41,47 @@ class ChatBox extends Component {
             this.setState({ logs: logs2.concat(obj) })
         })
     }
+
+    _renderHistory = () => {
+        let date = '';
+        const history = this.state.msg.map((msg, index) => {
+            let dateChanged = false;
+            if(index === 0) {
+                date = msg.created.substring(0,10);
+                dateChanged = true;
+            }
+            if(date !== msg.created.substring(0,10)){
+                date = msg.created.substring(0,10); 
+                dateChanged = true;
+            }
+            return (
+                <Fragment key={index}>
+                    { dateChanged ? <p className="dateSeparator"><span>{date}</span></p> : '' }
+                    <div>
+                            <span>{msg.username}</span>
+                            <span> : {msg.message}</span>
+                            <p></p>
+                    </div>
+                </Fragment>
+        )})
+        return history;
+    }
+
+    _renderLiveMessage = () => {
+        const messages = this.state.logs.map(message => {
+            return (
+                <div key={message.key}>
+                    <span>{message.name}</span>
+                    <span> : {message.message}</span>
+                    <p></p>
+                </div>
+            )
+        })
+        return messages;
+    }
+
     render() {
-        console.log(this.state)
-        const messages = this.state.logs.map(e => (
-            <div key={e.key}>
-                <span>{e.name}</span>
-                <span> : {e.message}</span>
-                <p />
-            </div>
-        ))
-        const chat = this.state.msg.map(e => (
-            <div>
-                <span>{e.username}</span>
-                <span> : {e.message}</span>
-                <p />
-            </div>
-        ))
+
         const { title, description } = this.props;
         return (
             <div className="ChatBox_Container">
@@ -65,8 +90,8 @@ class ChatBox extends Component {
                     <p className="ChatBox_desc">{description}</p>
                 </div>
                 <div className="ChatBox_msg">
-                    <div>{chat}</div>
-                    <div>{messages}</div>
+                    <div>{this._renderHistory()}</div>
+                    <div>{this._renderLiveMessage()}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">
                     <InputBox team_id={this.state.team_id}/>
