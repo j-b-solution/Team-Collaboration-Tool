@@ -44,7 +44,7 @@ const App = () =>  {
 
 const DashboardContainer = () => (
     <div>
-        <Route exact path='/dashboard/:team_id' component={Dashboard} />
+        <Route exact path='/dashboard/:team_id' render={(props) => <Dashboard {...props} userProfile={decodeTokenToJson()}/>} />
     </div>
 );
 

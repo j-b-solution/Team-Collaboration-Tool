@@ -101,13 +101,40 @@
             }
             .ChatBox_msg {
                 overflow-y: scroll;
-                
                 max-height: 80vh;
                 min-height: 80vh;
                 background-color: #e6e6e6;
                 padding: 20px;
-                .dateSeparator {
-                    color: red;
+                .msg {
+                    position: relative;
+                    &.left {
+                        .msg_context {
+                            border: 0.5px solid #f3f3f3;
+                            padding: 5px 20px;
+                            margin: 20px;
+                            background-color: #f3f3f3;
+                            border-radius: 5px;
+                        }
+                    }
+                    &.right {
+                        text-align: right;
+                        .msg_context {
+                            border: 0.5px solid #ECF6FF;
+                            padding: 5px 20px;
+                            margin: 20px;
+                            background-color: #ECF6FF;
+                            border-radius: 5px;
+                        }
+                    }
+                    .msg_user {
+                        font-weight: bold;
+                        vertical-align: top;
+                    }
+
+
+                }
+                .Separator {
+                    color: $key-color;
                     text-align: center;
                     display: flex;
                     align-items: center;
@@ -115,16 +142,19 @@
                         margin: 0 20px;
                     }
                     &:before {
-                        border-bottom: 1px solid #ff6b6b;
+                        border-bottom: 0.5px dashed $key-color;
                         content: '';
                         flex: 1;
                         position: relative;
                     }
                     &:after {
-                        border-bottom: 1px solid #ff6b6b;
+                        border-bottom: 0.5px dashed $key-color;
                         content: '';   
                         flex: 1;
                         position: relative;
+                    }
+                    &.Date {
+                        color: $key-color;
                     }
                 }
             }
