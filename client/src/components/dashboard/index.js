@@ -9,7 +9,7 @@ class Dashboard extends Component {
             <div className="Dashboard_container">
                 <div className="Db_left_4">
                         <TeamLogo />
-                        <SearchBox />
+                        <SearchBox {...this.props} />
                 </div>
                 <div className="Db_mid_7">
                     <ChatBox {...this.props} />
