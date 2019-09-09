@@ -18,6 +18,10 @@ let teamSchema = mongoose.Schema({
             owner_username: {
                 type: String,
                 default: ""
+            }, 
+            join_username:{
+                type: String,
+                default:""
             },
             created: {
                 type: Date,
