@@ -2,7 +2,8 @@ let express = require('express');
 let router = express.Router();
 
 let authController = require('../controllers/auth');
-let chatController = require('../controllers/chat')
+let chatController = require('../controllers/chat');
+let userController = require('../controllers/userList');
 
 /* POST - processes the Login Page */
 router.post('/login', authController.processLoginPage);
