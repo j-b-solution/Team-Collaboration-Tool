@@ -18,6 +18,7 @@ import Main from './main';
 import Dashboard from './dashboard';
 import EditUser from './user/edit';
 import AddTeam from './main/team/addTeam';
+import TeamSetting from './main/team/settings';
 
 const options = {
     timeout: 5000,
@@ -44,7 +45,7 @@ const App = () =>  {
 
 const DashboardContainer = () => (
     <div>
-        <Route exact path='/dashboard/:team_id' component={Dashboard} />
+        <Route exact path='/dashboard/:team_id' render={(props) => <Dashboard {...props} userProfile={decodeTokenToJson()}/>} />
     </div>
 );
 
@@ -62,6 +63,7 @@ const DefaultContainer = () => (
 
         <Route exact path='/:id/main' render={(props) => <Main {...props} userProfile={decodeTokenToJson()} />} />
         <Route exact path='/:id/main/add-team' component={AddTeam} />
+        <Route exact path='/:id/main/:team_id/settings' component={TeamSetting} />
         <Route exact path="/:id/edit" component={EditUser} />
 
         <Footer />

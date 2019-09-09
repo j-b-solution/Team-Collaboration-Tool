@@ -32,7 +32,6 @@ class InputBox extends Component {
     }
 
     _onSubmitMessage = (e) => {
-        console.log(this.state)
         e.preventDefault();
         if(this.state.message === '') {
             alert('Please enter your message')

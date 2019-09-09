@@ -1,0 +1,26 @@
+.Settings_Container {
+    width: 780px;
+    margin: 0 auto;
+    .section_title {
+        font-weight: 700;
+        text-indent: 4px;
+        font-size: 1.75rem;
+        line-height: 18px;
+        color: #777;
+    }
+    .btnRemove {
+        background: white;
+        color: #ba0000;
+        border: 1px solid #ba0000;
+        margin: 0 5px;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        &:hover {
+           background-color: #ba0000;
+           color: white;
+           transition: .5s; 
+        }
+    }
+}
