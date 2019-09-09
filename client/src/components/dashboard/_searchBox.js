@@ -49,6 +49,7 @@ class SearchBox extends Component {
                 'Access-Control-Allow-Headers': '*'
             },
             body: JSON.stringify({
+                
                 username: this.state.currentUserName
             })
         })
@@ -61,7 +62,7 @@ class SearchBox extends Component {
                 });
                 console.log("ADSDSA")
             },
-            
+
                 error => {
                     this.setState({
                         error: error
