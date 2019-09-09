@@ -31,11 +31,12 @@ class TeamList extends Component {
     }
 
     _renderTeamList = () => {
-        const { teamList } = this.state;
+        const { id, teamList } = this.state;
         if(teamList !== undefined ) {
             const teams = teamList.map((team) => {
                 return <Team key={team._id}
                             id={team._id}
+                            user_id={id}
                             name={team.name}
                             owner={team.owner_username} />
             })

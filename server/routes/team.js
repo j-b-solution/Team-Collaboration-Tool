@@ -9,4 +9,6 @@ router.get('/', teamController.displayTeamList)
 /* POST - processes to add team */
 router.post('/add', teamController.processAddTeam);
 
+/* GET - request to perform the delete action */
+router.get('/delete/:id', teamController.performDelete);
 module.exports = router;

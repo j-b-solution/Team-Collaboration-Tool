@@ -23,12 +23,14 @@ module.exports.displayTeamList = (req, res, next) => {
 }
 /* ~~ /api/team/add */
 module.exports.processAddTeam = (req, res, next) => {
+    console.log(req.body)
     let newTeam = teamModel({
         "name": req.body.name,
         "description": req.body.description,
         "owner_id": req.body.user_id,
         "owner_username": req.body.username
     })
+    console.log(newTeam)
     teamModel.create(newTeam, (err, team) => {
         if(err) {
             console.log(err);
@@ -38,4 +40,17 @@ module.exports.processAddTeam = (req, res, next) => {
             return res.json({success: true, msg: 'Successfully Added New Team'});
         }
     })
+}
+
+module.exports.performDelete = (req, res, next) => {
+    let id = req.params.id;
+
+    teamModel.findByIdAndRemove({_id:id}, (err) => {
+        if(err){
+            console.log(err);
+            res.end(err);
+        } else {
+            res.json({success: true, msg: 'Sucessfully Deleted TodoItem'});
+        }
+    });
 }
