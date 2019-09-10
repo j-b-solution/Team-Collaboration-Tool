@@ -49,7 +49,7 @@ class TeamList extends Component {
             <article>
                 <section className="userProfile_body">
                     <MainTitle title="Team List" />
-                    { this.state.teamList ? this._renderTeamList() : <LoadingBar  type='cylon' color='#214368' /> }
+                    { this.state.teamList ? this._renderTeamList() : <LoadingBar  type='cylon' color='#214368' msg='Loading team information...' /> }
                     <AddButton {...this.props} />
                 </section>
         </article>
