@@ -2,10 +2,9 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import InputBox from './_inputBox';
 import socketio from 'socket.io-client'
-import $ from 'jquery';
-import Image_logo from "../../../assets/images/logo.png";
+import LoadingBar from '../../common/Loading_bar';
 
-const socket = socketio.connect('http://localhost:8080')
+const socket = socketio.connect('http://localhost:8080');
 
 class ChatBox extends Component {
     constructor(props) {
@@ -13,7 +12,7 @@ class ChatBox extends Component {
         this.state = {
             team_id: this.props.match.params.team_id,
             user_loggedIn: sessionStorage.getItem("user"),
-            msg: [],
+            msg: '',
             logs: []
         }
     }
@@ -86,12 +85,21 @@ class ChatBox extends Component {
     }
 
     _renderLiveMessage = () => {
+        let prevUser = '';
+
         const messages = this.state.logs.map(message => {
-            const msgStyleName = message.username === this.state.user_loggedIn ? "msg right" : "msg left"
+            
+            const msgStyleName = message.name === this.state.user_loggedIn ? "msg right" : "msg left";
+            const isSameUser = message.name === prevUser  ? true : false
+            prevUser = message.name;
+
             return (
                 <div key={message.key} className={msgStyleName}>
-                    <p className="msg_user">{message.name}</p>
-                    <span  className="msg_context"> : {message.message}</span>
+                    { isSameUser ? "" 
+                    : 
+                        <p className="msg_user">{message.name}</p> 
+                    }                    
+                    <span  className="msg_context"> {message.message}</span>
                     <p></p>
                 </div>
             )
@@ -100,6 +108,7 @@ class ChatBox extends Component {
     }
 
     render() {
+        const { msg } = this.state;
         const { title, description } = this.props;
         return (
             <div className="ChatBox_Container">
@@ -108,8 +117,15 @@ class ChatBox extends Component {
                     <p className="ChatBox_desc">{description}</p>
                 </div>
                 <div ref={`thing`} className="ChatBox_msg">
-                    <div>{this._renderHistory()}</div>
-                    <p className="Separator"><span> message has loaded</span></p>
+                    { msg ? 
+                        <Fragment>
+                            <div>{this._renderHistory()}</div>
+                            <p className="Separator"><span> message has loaded</span></p>
+                        </Fragment>
+                    :
+                    <LoadingBar  type='cylon' color='#214368' msg='Loading message history...' />
+                    }
+
                     <div>{this._renderLiveMessage()}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">

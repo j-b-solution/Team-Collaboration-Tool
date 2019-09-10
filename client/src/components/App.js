@@ -19,6 +19,7 @@ import Dashboard from './dashboard';
 import EditUser from './user/edit';
 import AddTeam from './main/team/addTeam';
 import TeamSetting from './main/team/settings';
+import Contact from './contact';
 
 const options = {
     timeout: 5000,
@@ -53,12 +54,15 @@ const DefaultContainer = () => (
     <div>
         <Header isLoggedIn={isLoggedIn()} userProfile={decodeTokenToJson()}/>       
         <Route exact path='/' component={Home} />
+        <Route exact path='/contact' component={Contact} />
         {
             isLoggedIn() ? 
             <Route exact path="/login" render={() => (<Redirect to="/"/> )} /> 
             : 
             <Route exact path='/login' component={Login} />
         }
+
+
         <Route exact path='/register' component={Register} />
 
         <Route exact path='/:id/main' render={(props) => <Main {...props} userProfile={decodeTokenToJson()} />} />
