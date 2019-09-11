@@ -17,16 +17,20 @@ class ForgetPassword extends Component {
             forgetEmail: ''
         })
     }
+    _onSubmit = (e) => {
+        e.preventDefault();
+        alert('This feature will update shortly');
+    }
     render() {
         return (
             <Modal className="ForgetPW_Modal" open={this.props.open} onClose={this._onClose}  center>
                 <br />
                 <p className="modal_title">Please enter your email. We will send you instructions to reset your password.</p>
-                <form>
+                <form onSubmit={this._onSubmit}>
                     <input className="txtbox_email"  text="email" name="forgetEmail" placeholder="enter your email" onChange={e => this.setState({[e.target.name]: e.target.value})} />
                     <div className="Modal_btnRow">
                         <button type="reset" onClick={this._btnClear} className="Modal_btnClear">Clear</button>
-                        <button className="Modal_btnSubmit" disabled={!this.state.forgetEmail}>Submit</button>
+                        <button type="submit" className="Modal_btnSubmit" disabled={!this.state.forgetEmail}>Submit</button>
                     </div>
                 </form>
             </Modal> 

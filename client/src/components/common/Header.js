@@ -76,9 +76,10 @@ class Header extends Component {
                                         <li className="nav-item dropdown right">
                                             <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello, {user}</a>
                                             <div className="dropdown-menu">
-                                            <Link className="dropdown-item" to={{pathname: `/${userProfile.id}/edit`, component: '../user/edit'}}>Edit Profile</Link>
-                                            
+                                            {/* <Link className="dropdown-item" to={{pathname: `/${userProfile.id}/edit`, component: '../user/edit'}}>Edit Profile</Link>
                                             <div className="dropdown-divider"></div>
+                                            */}
+
                                             <Link className="dropdown-item" to={{pathname: `/${userProfile.id}/main`}} >Go to team list</Link>
                                             <Link className="dropdown-item" onClick={this._userLogout} to='/'>Logout</Link>
                                             </div>
