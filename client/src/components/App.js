@@ -20,6 +20,7 @@ import EditUser from './user/edit';
 import AddTeam from './main/team/addTeam';
 import TeamSetting from './main/team/settings';
 import Contact from './contact';
+import Download from './download';
 
 const options = {
     timeout: 5000,
@@ -55,6 +56,7 @@ const DefaultContainer = () => (
         <Header isLoggedIn={isLoggedIn()} userProfile={decodeTokenToJson()}/>       
         <Route exact path='/' component={Home} />
         <Route exact path='/contact' component={Contact} />
+        <Route exact path='/download' component={Download} />
         {
             isLoggedIn() ? 
             <Route exact path="/login" render={() => (<Redirect to="/"/> )} /> 

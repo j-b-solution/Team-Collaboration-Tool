@@ -23,10 +23,11 @@ const UserProfile = ({id, name, email}) => {
                                 <span className="user_email">{email}</span>
                             </dd>
                         </dl>
+                        {/*
                         <dl className="btn-profile-edit">
                             <Link to={{pathname: `/${id}/edit`, component: '../user/edit'}}><FontAwesomeIcon icon={faEdit} />Edit Profile</Link>
                         </dl>
-
+                        */}
                     </article>
                 </section>
         </div>
