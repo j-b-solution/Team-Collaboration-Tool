@@ -17,7 +17,7 @@ let jwt = require("jsonwebtoken");
 module.exports.ownUser = async (req, res, next) => {
     let id = req.params.id;
 
-    userListModel.find({ _id: id }).exec((err, userList) => {
+    userListModel.findOne({ _id: id }).exec((err, userList) => {
         if (err) {
             console.log(err);
             res.end(err);
@@ -31,18 +31,17 @@ module.exports.ownUser = async (req, res, next) => {
 
 }
 
-module.exports.currenUserList = async(req, res, next) =>{
-    let updateTeam = userListModel({
-        "join_username": req.body.username
-    })
-    console.log(req.body.username)
-    // userListModel.insertOne(updateTeam, (err, team)=>{
-    //     if(err){
-    //         console.log(err);
-    //         res.end(err);
-    //     } else {
-    //         console.log(team)
-    //         return res.json({success: true, msg: 'Successfully Update team model'})
-    //     }
-    // })
+module.exports.currenUserList = async (req, res, next) => {
+    let id = req.params.id;
+    userListModel.updateMany({ _id: id },{ $addToSet: { join_username: req.body.username } }).exec((err, joinUserList) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            if (joinUserList == null) {
+                res.json({ success: true, msg: 'Successfully rednder join List', joinUserList: [] })
+            }
+            return res.json({ success: true, msg: 'Successfully rednder join List', joinUserList: joinUserList })
+        }
+    });
 }

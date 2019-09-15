@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import InputBox from './chatbox/_inputBox';
 import socketio from 'socket.io-client'
-import { BrowserRouter as Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import { faCrown } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 
 const socket = socketio.connect('http://localhost:8080')
@@ -14,33 +13,14 @@ class SearchBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            owner: [],
+            chatuserlist: '',
             username: [],
             currentUserName: sessionStorage.getItem('user'),
             team_id: this.props.match.params.team_id,
             currentUsersName: []
         }
     }
-
     componentWillMount() {
-        fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}/owner`)
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                this.setState({
-                    owner: data.userList
-                });
-            },
-                error => {
-                    this.setState({
-                        error: error
-                    });
-                },
-            );
-    }
-    componentDidMount() {
-
         fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}/saver`, {
             method: 'POST',
             headers: {
@@ -57,9 +37,7 @@ class SearchBox extends Component {
             })
             .then(data => {
                 this.setState({
-                    currentUsersName: data.currenUserList
                 });
-                console.log("ADSDSA")
             },
                 error => {
                     this.setState({
@@ -68,20 +46,47 @@ class SearchBox extends Component {
                 },
             );
     }
-    _renderCurrentUser = () => {
-        const userList = this.state.owner.map((owner, index) => {
-            return (
-                <div key={index}>
-                    <span>chat room owner</span>
-                    <span>: {owner.owner_username}</span>
-                </div>
-            )
-        })
-        return userList;
 
+    componentDidMount() {
+        fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}/userList`)
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                this.setState({
+                    chatuserlist: data.userList
+                });
+            },
+                error => {
+                    this.setState({
+                        error: error
+                    });
+                },
+            );
     }
 
+    _renderJoinUser = () => {
+        const _joinUserList = this.state.chatuserlist.join_username.map((joinuser, index) => {
+            return (
+                <div key={index}>
+                    &nbsp;&nbsp;<FontAwesomeIcon icon={faUser} size="lg" />&nbsp;{joinuser}
+                </div>
+            )
+
+        })
+        return _joinUserList
+    }
+
+    _renderOwnerUser = () => {
+        return (
+            <div>
+                <span>&nbsp;<FontAwesomeIcon icon={faCrown} size="lg" />&nbsp;Owner</span>
+                <span>: {this.state.chatuserlist.owner_username}</span>
+            </div>
+        )
+    }
     render() {
+        const { chatuserlist } = this.state;
         return (
             <section>
                 <div className="SearchBox_container">
@@ -90,9 +95,9 @@ class SearchBox extends Component {
                 <span className="tooltiptext">TODO: Need to promp search box</span>
                     </button>
                 </div>
-                <div>
-                    Current Joining User.
-                    <div>{this._renderCurrentUser()}</div>
+                <div className="SearchBox_userList">
+                    <div>{this._renderOwnerUser()}</div>
+                    <div className="SearchBox_user">{this.state.chatuserlist ? this._renderJoinUser() : ""}</div>
                 </div>
             </section>
         );

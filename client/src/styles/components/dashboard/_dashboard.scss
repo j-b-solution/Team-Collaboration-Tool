@@ -1,215 +1,224 @@
 .Dashboard_container {
-    width: 100%;
-    display: flex;
-    min-height: 100vh;
-    //Left Grid
-    .Db_left_4{
-        width: 20%;
-        
-        border-right: 0.5px solid #969696;
-        //_teamLogo.js
-        .teamLogo_container {
-            min-height: 55px;
-            background-color: white;
-            text-align: center;
-            .teamLogo_wrap {
-                padding: 2% 0;
-                .teamLogo {
-                    width: 40px;
-                    height: 40px;
-                    vertical-align: bottom;
-                }
-                .teamLogo_name {
-                    display: inline-block;
-                    margin: 0 2rem;
-                    font-size: $s-size;
-                    font-weight: bold;
-                }
-            }
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  //Left Grid
+  .Db_left_4 {
+    width: 13%;
+
+    border-right: 0.5px solid #969696;
+    //_teamLogo.js
+    .teamLogo_container {
+      min-height: 55px;
+      background-color: white;
+      text-align: center;
+      .teamLogo_wrap {
+        padding: 2% 0;
+        .teamLogo {
+          width: 40px;
+          height: 40px;
+          vertical-align: bottom;
         }
-        .SearchBox_container {
-            border-top: 0.5px solid #969696;
-            border-bottom: 0.5px solid #969696;
-            background-color: white;
-            min-height: 4%;
-            text-align: center;
-            .SearchBox {
-                background-color: rgb(241, 241, 241);
-                border-radius: 14px;
-                border: none;
-                text-align: center;
-                font-style: italic;
-                position: relative;
-                height: 28px;
-                margin: 5px 0;
-                width: 90%;
-                &:hover {
-                    .tooltiptext {
-                        visibility: visible;
-                    }
-                }
-                &:focus {
-                    outline: none;
-                }
-                .tooltiptext {
-                    visibility: hidden;
-                    width: 120px;
-                    background-color: black;
-                    color: #fff;
-                    text-align: center;
-                    padding: 5px 0;
-                    border-radius: 6px;
-                    transform: translate(-50%, 10px);
-                    top: 100%;
-                    left: 50%;
-                    position: absolute;
-                    z-index: 1;
-                    &:after {
-                        content: " ";
-                        position: absolute;
-                        bottom: 100%;  
-                        left: 50%;
-                        margin-left: -5px;
-                        border-width: 5px;
-                        border-style: solid;
-                        border-color: transparent transparent black transparent;
-                    }
-                }
-                
-            }
+        .teamLogo_name {
+          display: inline-block;
+          margin: 0 2rem;
+          font-size: $s-size;
+          font-weight: bold;
         }
+      }
     }
-
-    // Mid Grid
-    .Db_mid_7 {
-        width: 80%;
-        .ChatBox_Container {
-            .ChatBox_titleBox {
-                min-height: 55px;
-                background-color: white;
-                border-bottom: 0.5px solid #e3e3e3;
-                .ChatBox_title {
-                    margin: 0;
-                    font-weight: 700;
-                    padding: 5px;
-                    font-size: $ss-size;
-                }
-                .ChatBox_desc {
-                    margin: 0 10px;
-                    font-size: 14px;
-                }
-            }
-            .ChatBox_msg {
-                overflow-y: scroll;
-                max-height: 80vh;
-                min-height: 80vh;
-                background-color: #e6e6e6;
-                padding: 20px;
-                .msg {
-                    position: relative;
-                    &.left {
-                        .msg_context {
-                            border: 0.5px solid #f3f3f3;
-                            padding: 5px 20px;
-                            margin: 20px;
-                            background-color: #f3f3f3;
-                            border-radius: 5px;
-                        }
-                    }
-                    &.right {
-                        text-align: right;
-                        // .msg_user {
-                        //     display: none;
-                        // }
-                        .msg_context {
-                            border: 0.5px solid #ECF6FF;
-                            padding: 5px 20px;
-                            margin: 20px;
-                            background-color: #ECF6FF;
-                            border-radius: 5px;
-                        }
-                    }
-                    .msg_user {
-                        font-weight: bold;
-                        vertical-align: top;
-                    }
-
-
-                }
-                .Separator {
-                    color: $key-color;
-                    text-align: center;
-                    display: flex;
-                    align-items: center;
-                    span {
-                        margin: 0 20px;
-                    }
-                    &:before {
-                        border-bottom: 0.5px dashed $key-color;
-                        content: '';
-                        flex: 1;
-                        position: relative;
-                    }
-                    &:after {
-                        border-bottom: 0.5px dashed $key-color;
-                        content: '';   
-                        flex: 1;
-                        position: relative;
-                    }
-                    &.Date {
-                        color: $key-color;
-                    }
-                }
-            }
-            .ChatBox_msg_inputBox {
-                border-top: 0.5px solid #e3e3e3;
-                height: 100px;
-                .InputBox_Body {
-                    width: 100%;
-                    display: inline-flex;
-                    .Chat{
-                        width: calc(100% - 100px);
-                        margin: 9px auto 9px auto;
-                        position: relative;
-                    
-                    }
-                    .InputBox_btnPlus {
-                        margin: 30px 0px 0px 20px;
-                        color: $key-color;
-                        &:hover {
-                            transform: rotate(360deg);
-                            transition: .5s;
-                            cursor: pointer;
-                        }
-                    }
-                    .Body_Textbox {
-                        width: 85%;
-                        height: 80px;
-                        text-indent: 20px;
-                        text-align: left;
-                        resize: none;
-                    }
-                    .Body_btnSend {
-                        width: 80px;
-                        height: 40px;
-                        margin: 0px 10px 0px 20px;
-                        background-color: $key-color;
-                        color: white;
-                        border: none;
-                        border-radius: 10%;
-                        &:disabled {
-                            opacity: 0.9;
-                        }
-                    }
-                }
-            }
+    .SearchBox_userList {
+      margin-top: 10px;
+      text-align: center;
+      overflow-y: scroll;
+      max-height: 59vh;
+      min-height: 20vh;
+      .SearchBox_user {
+        text-align: left;
+      }
+    }
+    .SearchBox_container {
+      border-top: 0.5px solid #969696;
+      border-bottom: 0.5px solid #969696;
+      background-color: white;
+      min-height: 4%;
+      text-align: center;
+      .SearchBox {
+        background-color: rgb(241, 241, 241);
+        border-radius: 14px;
+        border: none;
+        text-align: center;
+        font-style: italic;
+        position: relative;
+        height: 28px;
+        margin: 5px 0;
+        width: 90%;
+        &:hover {
+          .tooltiptext {
+            visibility: visible;
+          }
         }
+        &:focus {
+          outline: none;
+        }
+        .tooltiptext {
+          visibility: hidden;
+          width: 120px;
+          background-color: black;
+          color: #fff;
+          text-align: center;
+          padding: 5px 0;
+          border-radius: 6px;
+          transform: translate(-50%, 10px);
+          top: 100%;
+          left: 50%;
+          position: absolute;
+          z-index: 1;
+          &:after {
+            content: " ";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+          }
+        }
+      }
     }
+  }
 
-    // right Grid
-    .Db_right_1 {
-        width: 5%;
-        background-color: $key-color;
-        color: white;
+  // Mid Grid
+  .Db_mid_7 {
+    width: 89%;
+    .ChatBox_Container {
+      .ChatBox_titleBox {
+        min-height: 55px;
+        background-color: white;
+        border-bottom: 0.5px solid #e3e3e3;
+        .ChatBox_title {
+          margin: 0;
+          font-weight: 700;
+          padding: 5px;
+          font-size: $ss-size;
+        }
+        .ChatBox_desc {
+          margin: 0 10px;
+          font-size: 14px;
+        }
+      }
+      .ChatBox_msg {
+        overflow-y: scroll;
+        max-height: 80vh;
+        min-height: 80vh;
+        background-color: #e6e6e6;
+        padding: 20px;
+        .msg {
+          position: relative;
+          &.left {
+            .msg_context {
+              border: 0.5px solid #f3f3f3;
+              padding: 5px 20px;
+              margin: 20px;
+              background-color: #f3f3f3;
+              border-radius: 5px;
+            }
+          }
+          &.right {
+            text-align: right;
+            .msg_context {
+              border: 0.5px solid #ecf6ff;
+              padding: 5px 20px;
+              margin: 20px;
+              background-color: #ecf6ff;
+              border-radius: 5px;
+            }
+          }
+          .msg_user {
+            font-weight: bold;
+            vertical-align: top;
+          }
+        }
+        .Separator {
+          color: $key-color;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          span {
+            margin: 0 20px;
+          }
+          &:before {
+            border-bottom: 0.5px dashed $key-color;
+            content: "";
+            flex: 1;
+            position: relative;
+          }
+          &:after {
+            border-bottom: 0.5px dashed $key-color;
+            content: "";
+            flex: 1;
+            position: relative;
+          }
+          &.Date {
+            color: $key-color;
+          }
+        }
+      }
+      .ChatBox_msg_inputBox {
+        border-top: 0.5px solid #e3e3e3;
+        height: 100px;
+        .InputBox_Body {
+          width: 100%;
+          display: inline-flex;
+          .Chat {
+            width: calc(100% - 100px);
+            margin: 9px auto 9px auto;
+            position: relative;
+          }
+          .InputBox_btnPlus {
+            margin: 30px 0px 0px 20px;
+            color: $key-color;
+            &:hover {
+              transform: rotate(360deg);
+              transition: 0.5s;
+              cursor: pointer;
+            }
+          }
+          .Body_Textbox {
+            width: 85%;
+            height: 80px;
+            text-indent: 20px;
+            text-align: left;
+            resize: none;
+          }
+          .Body_btnSend {
+            width: 80px;
+            height: 40px;
+            margin: 0px 10px 0px 20px;
+            background-color: $key-color;
+            color: white;
+            border: none;
+            border-radius: 10%;
+            &:disabled {
+              opacity: 0.9;
+            }
+          }
+        }
+      }
     }
+  }
+
+  // right Grid
+  .Db_right_1 {
+    border-left: 0.5px solid #969696;
+    width: 3%;
+    background-color: white;
+    .icon-container {
+      margin-top: 60px;
+    }
+    .icon-margin {
+      margin: 10px;
+    }
+  }
 }
