@@ -16,7 +16,7 @@ router.get('/logout', authController.performLogout);
 
 router.get('/dashboard/:id',chatController.chatHistory);
 
-router.get('/dashboard/:id/owner',userController.ownUser);
+router.get('/dashboard/:id/userList',userController.ownUser);
 
 router.post('/dashboard/:id/saver',userController.currenUserList);
 

@@ -28,7 +28,8 @@ module.exports.processAddTeam = (req, res, next) => {
         "name": req.body.name,
         "description": req.body.description,
         "owner_id": req.body.user_id,
-        "owner_username": req.body.username
+        "owner_username": req.body.username,
+        "join_username":req.body.username
     })
     console.log(newTeam)
     teamModel.create(newTeam, (err, team) => {

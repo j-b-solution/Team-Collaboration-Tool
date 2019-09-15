@@ -20,7 +20,7 @@ let teamSchema = mongoose.Schema({
                 default: ""
             }, 
             join_username:{
-                type: String,
+                type: Array,
                 default:""
             },
             created: {

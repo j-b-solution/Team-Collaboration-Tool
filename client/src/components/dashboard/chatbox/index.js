@@ -26,12 +26,12 @@ class ChatBox extends Component {
                     msg: data.chatList
                 });
             },
-            error => {
-                this.setState({
-                    error: error
-                });
-            },
-        );
+                error => {
+                    this.setState({
+                        error: error
+                    });
+                },
+            );
         this._foucsOnBottom();
     }
 
@@ -48,7 +48,7 @@ class ChatBox extends Component {
 
     }
     _foucsOnBottom = () => {
-        const {thing} = this.refs;
+        const { thing } = this.refs;
         thing.scrollTop = thing.scrollHeight - thing.clientHeight;
     }
     _renderHistory = () => {
@@ -56,31 +56,32 @@ class ChatBox extends Component {
         let prevUser = '';
         const history = this.state.msg.map((msg, index) => {
             let dateChanged = false;
-            if(index === 0) {
-                date = msg.created.substring(0,10);
+            if (index === 0) {
+                date = msg.created.substring(0, 10);
                 dateChanged = true;
             }
-            if(date !== msg.created.substring(0,10)){
-                date = msg.created.substring(0,10); 
+            if (date !== msg.created.substring(0, 10)) {
+                date = msg.created.substring(0, 10);
                 dateChanged = true;
             }
             const msgStyleName = msg.username === this.state.user_loggedIn ? "msg right" : "msg left"
 
-            const isSameUser = (msg.username === prevUser && !dateChanged ) ? true : false
+            const isSameUser = (msg.username === prevUser && !dateChanged) ? true : false
             prevUser = msg.username;
             return (
                 <Fragment key={index}>
-                    { dateChanged ? <p className="Separator Date"><span>{date}</span></p> : '' }
+                    {dateChanged ? <p className="Separator Date"><span>{date}</span></p> : ''}
                     <div className={msgStyleName}>
-                        { isSameUser ? "" 
-                        : 
-                            <p className="msg_user">{msg.username}</p> 
+                        {isSameUser ? ""
+                            :
+                            <p className="msg_user">{msg.username}</p>
                         }
                         <span className="msg_context">  {msg.message}</span>
                         <p></p>
                     </div>
                 </Fragment>
-        )})
+            )
+        })
         return history;
     }
 
@@ -88,18 +89,18 @@ class ChatBox extends Component {
         let prevUser = '';
 
         const messages = this.state.logs.map(message => {
-            
+
             const msgStyleName = message.name === this.state.user_loggedIn ? "msg right" : "msg left";
-            const isSameUser = message.name === prevUser  ? true : false
+            const isSameUser = message.name === prevUser ? true : false
             prevUser = message.name;
 
             return (
                 <div key={message.key} className={msgStyleName}>
-                    { isSameUser ? "" 
-                    : 
-                        <p className="msg_user">{message.name}</p> 
-                    }                    
-                    <span  className="msg_context"> {message.message}</span>
+                    {isSameUser ? ""
+                        :
+                        <p className="msg_user">{message.name}</p>
+                    }
+                    <span className="msg_context"> {message.message}</span>
                     <p></p>
                 </div>
             )
@@ -117,19 +118,19 @@ class ChatBox extends Component {
                     <p className="ChatBox_desc">{description}</p>
                 </div>
                 <div ref={`thing`} className="ChatBox_msg">
-                    { msg ? 
+                    {msg ?
                         <Fragment>
                             <div>{this._renderHistory()}</div>
                             <p className="Separator"><span> message has loaded</span></p>
                         </Fragment>
-                    :
-                    <LoadingBar  type='cylon' color='#214368' msg='Loading message history...' />
+                        :
+                        <LoadingBar type='cylon' color='#214368' msg='Loading message history...' />
                     }
 
                     <div>{this._renderLiveMessage()}</div>
                 </div>
                 <div className="ChatBox_msg_inputBox">
-                    <InputBox team_id={this.state.team_id}/>
+                    <InputBox team_id={this.state.team_id} />
                 </div>
             </div>
         )

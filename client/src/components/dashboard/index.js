@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TeamLogo from './_teamLogo';
 import ChatBox from './chatbox';
 import SearchBox from './_searchBox';
+import Property from './_property';
 
 class Dashboard extends Component {
     render(){
@@ -15,9 +16,9 @@ class Dashboard extends Component {
                     <ChatBox {...this.props} />
                 </div>
                 
-                {/* <div className="Db_right_1">
-                    TODO:  additional functions
-                </div> */}
+                <div className="Db_right_1">
+                    <Property />
+                </div>
             </div>
         )
     }
