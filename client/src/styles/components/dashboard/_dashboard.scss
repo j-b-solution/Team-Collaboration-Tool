@@ -4,7 +4,7 @@
   min-height: 100vh;
   //Left Grid
   .Db_left_4 {
-    width: 13%;
+    width: 18%;
 
     border-right: 0.5px solid #969696;
     //_teamLogo.js
@@ -31,10 +31,13 @@
       margin-top: 10px;
       text-align: center;
       overflow-y: scroll;
+      overflow: auto;
       max-height: 59vh;
       min-height: 20vh;
       .SearchBox_user {
         text-align: left;
+        padding: 0 10px;
+        margin-top: 10px;
       }
     }
     .SearchBox_container {
@@ -91,7 +94,7 @@
 
   // Mid Grid
   .Db_mid_7 {
-    width: 89%;
+    width: 77%;
     .ChatBox_Container {
       .ChatBox_titleBox {
         min-height: 55px;
@@ -212,10 +215,11 @@
   // right Grid
   .Db_right_1 {
     border-left: 0.5px solid #969696;
-    width: 3%;
+    width: 5%;
     background-color: white;
     .icon-container {
       margin-top: 60px;
+      text-align: center;
     }
     .icon-margin {
       margin: 10px;

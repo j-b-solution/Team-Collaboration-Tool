@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 class Download extends Component {
     render() {
@@ -11,9 +12,12 @@ class Download extends Component {
                     <span className="section_scope">Service will start soon</span>
                 </section>
                 <div className="button_container">
-                    <button className="btn">Contact Sales</button>
-                    <button className="btn">Sign up for free today</button>
-
+                    <Link to="/contact">
+                        <button className="btn">Contact Sales</button>
+                    </Link>
+                    <Link to="/register">
+                        <button className="btn">Sign up for free today</button>
+                    </Link>
                 </div>
             </div>
         )

@@ -23,7 +23,9 @@ class AddTeam extends Component {
                 username: this.state.username
             })
         }).then(res =>{
-        }).catch(err =>{
+            this.props.history.push(`/${this.state.user_id}/main`);
+        })
+        .catch(err =>{
             console.log(err);
         })
     }
