@@ -18,7 +18,7 @@ class Register extends Component {
         if(this.state.password !== this.state.confirmPassword){
             alert('Passwords do not match');
         }else{
-            fetch('http://localhost:8080/api/auth/register', {
+            fetch('https://jb-solutions.herokuapp.com/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

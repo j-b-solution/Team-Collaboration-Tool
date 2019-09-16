@@ -9,7 +9,7 @@ class AddTeam extends Component {
     }
     _handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/api/team/add', {
+        fetch('https://jb-solutions.herokuapp.com/api/team/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

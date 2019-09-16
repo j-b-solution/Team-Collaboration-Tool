@@ -7,7 +7,7 @@ import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 
-const socket = socketio.connect('http://localhost:8080')
+const socket = socketio.connect('https://jb-solutions.herokuapp.com')
 class SearchBox extends Component {
 
     constructor(props) {
@@ -21,7 +21,7 @@ class SearchBox extends Component {
         }
     }
     componentWillMount() {
-        fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}/saver`, {
+        fetch(`https://jb-solutions.herokuapp.com/api/auth/dashboard/${this.state.team_id}/saver`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ class SearchBox extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}/userList`)
+        fetch(`https://jb-solutions.herokuapp.com/api/auth/dashboard/${this.state.team_id}/userList`)
             .then(res => {
                 return res.json()
             })

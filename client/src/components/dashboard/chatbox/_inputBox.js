@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-const socket = socketio.connect('http://localhost:8080')
+const socket = socketio.connect('https://jb-solutions.herokuapp.com')
 
 class InputBox extends Component {
 

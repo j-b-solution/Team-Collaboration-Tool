@@ -9,7 +9,7 @@ class TeamDelete extends Component {
     }
     _clickDelete = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:8080/api/team/delete/${this.state.team_id}`)
+        fetch(`https://jb-solutions.herokuapp.com/api/team/delete/${this.state.team_id}`)
         .then(response => response.json())
         .then(json => {
             console.log(json)

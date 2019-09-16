@@ -19,7 +19,7 @@ class TeamList extends Component {
         clearInterval(this.timerID);
     }
     _callApi = () => {
-        return fetch(`http://localhost:8080/api/team`)
+        return fetch(`https://jb-solutions.herokuapp.com/api/team`)
         .then(response => response.json())
         .then(json => {
             this.setState({

@@ -4,7 +4,7 @@ import InputBox from './_inputBox';
 import socketio from 'socket.io-client'
 import LoadingBar from '../../common/Loading_bar';
 
-const socket = socketio.connect('http://localhost:8080');
+const socket = socketio.connect('https://jb-solutions.herokuapp.com');
 
 class ChatBox extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class ChatBox extends Component {
         }
     }
     componentDidMount() {
-        fetch(`http://localhost:8080/api/auth/dashboard/${this.state.team_id}`)
+        fetch(`https://jb-solutions.herokuapp.com/api/auth/dashboard/${this.state.team_id}`)
             .then(res => {
                 return res.json()
             })

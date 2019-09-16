@@ -22,7 +22,7 @@ class Login extends Component {
     _onSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:8080/api/auth/login', {
+        fetch('https://jb-solutions.herokuapp.com/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

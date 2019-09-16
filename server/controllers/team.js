@@ -31,13 +31,11 @@ module.exports.processAddTeam = (req, res, next) => {
         "owner_username": req.body.username,
         "join_username":req.body.username
     })
-    console.log(newTeam)
     teamModel.create(newTeam, (err, team) => {
         if(err) {
             console.log(err);
             res.end(err);
         } else {
-            console.log(team)
             return res.json({success: true, msg: 'Successfully Added New Team'});
         }
     })

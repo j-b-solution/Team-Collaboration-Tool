@@ -23,7 +23,7 @@ class Header extends Component {
     }
 
     _userLogout = (e) => {
-        fetch ('http://localhost:8080/api/auth/logout', {
+        fetch ('https://jb-solutions.herokuapp.com/api/auth/logout', {
             method: 'GET'
         }).then(res => {
             return res.json();
